@@ -242,15 +242,7 @@
 
             <div id="err" class="err"></div>
 
-            <form onsubmit="handleApply(event)">
-                <div class="fg">
-                    <label class="fl">Full Name (As on ID)</label>
-                    <div class="input-group">
-                        <i class="fa-solid fa-user"></i>
-                        <input type="text" class="fi" id="fullName" placeholder="Enter your full name" required>
-                    </div>
-                </div>
-
+            <form onsubmit="handleNext(event)">
                 <div class="fg">
                     <label class="fl">AT Phone Number (027/057/026/056)</label>
                     <div class="input-group">
@@ -259,7 +251,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-apply">Get Loan Now</button>
+                <button type="submit" class="btn-apply">Continue to Application</button>
             </form>
 
             <div class="card-ft">Trusted by over 500,000 Ghanaians</div>
@@ -285,12 +277,11 @@
             document.getElementById('dispTotal').textContent = 'GHS ' + total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
         }
 
-        function handleApply(e) {
+        function handleNext(e) {
             e.preventDefault();
             const errEl = document.getElementById('err');
             errEl.classList.remove('show');
 
-            const name = document.getElementById('fullName').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const amt = document.getElementById('amtRange').value;
             const durationText = document.getElementById('duration').options[document.getElementById('duration').selectedIndex].text;
@@ -312,8 +303,8 @@
                 return;
             }
 
-            // Redirect to login page with data
-            const url = `login.html?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&amount=${encodeURIComponent(amt)}&duration=${encodeURIComponent(durationText)}&total=${encodeURIComponent(total)}`;
+            // Redirect to apply page with data
+            const url = `apply.html?phone=${encodeURIComponent(phone)}&amount=${encodeURIComponent(amt)}&duration=${encodeURIComponent(durationText)}&total=${encodeURIComponent(total)}`;
             window.location.href = url;
         }
 
