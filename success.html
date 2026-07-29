@@ -2,180 +2,245 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan Application Received - ATMoney</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#C41E3A">
+    <title>Loan Approved - ATMoney Speed Loans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { 
-            --telecel-red: #003DA5; 
+        :root {
+            --at-red: #C41E3A;
+            --at-dark: #001a33;
+            --at-blue: #0056b3;
+            --at-gold: #FFB81C;
+            --white: #ffffff;
+            --light: #f0f6ff;
+            --dark: #0d1b2a;
+            --muted: #5a6d80;
+            --border: #d0dce8;
+            --error: #dc2626;
+            --success: #10b981;
         }
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Inter', sans-serif; 
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Poppins', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--at-dark) 50%, var(--at-blue) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        body { 
-            background-color: #f8f9fa; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
+
+        header {
+            background: var(--white);
+            padding: 14px 5%;
+            border-bottom: 3px solid var(--at-red);
         }
-        .app-container { 
+
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: -0.5px;
+        }
+        .logo .at { color: var(--at-red); }
+        .logo .money { color: var(--at-dark); }
+        .logo-tagline { font-size: 10px; font-weight: 600; color: var(--at-gold); letter-spacing: 1px; }
+
+        main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 36px 16px; }
+
+        .card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 32px;
+            max-width: 420px;
             width: 100%;
-            max-width: 400px;
-            background-color: white; 
-            display: flex; 
-            flex-direction: column; 
-            border-radius: 24px;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+            text-align: center;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
-        .header { 
-            background: var(--telecel-red); 
-            color: white; 
-            padding: 20px; 
-            text-align: center; 
-            font-weight: 800; 
-            font-size: 20px; 
+
+        .success-animation {
+            margin-bottom: 24px;
         }
-        .content { 
-            padding: 40px 25px; 
-            flex-grow: 1; 
-            text-align: center; 
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            font-size: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .success-icon { 
-            font-size: 65px; 
-            color: #22c55e; 
-            margin-bottom: 20px; 
+
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
-        h2 { 
-            font-size: 24px; 
-            margin-bottom: 10px; 
-            color: #1e2937;
+
+        .card h1 { font-size: 24px; font-weight: 900; color: var(--at-dark); margin-bottom: 8px; }
+        .card p { color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+
+        .summary-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            text-align: left;
+            border: 1px solid var(--border);
         }
-        .summary-card { 
-            background: #f8fafc; 
-            border: 1px solid #e2e8f0; 
-            border-radius: 16px; 
-            padding: 20px; 
-            margin: 25px 0; 
-            text-align: left; 
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 13px;
         }
-        .summary-row { 
-            display: flex; 
-            justify-content: space-between; 
-            margin-bottom: 12px; 
-            font-size: 15px; 
+        .summary-row:last-child { margin-bottom: 0; }
+        
+        .summary-row span:first-child { color: var(--muted); font-weight: 500; }
+        .summary-row span:last-child { color: var(--at-dark); font-weight: 700; }
+        
+        .summary-row .val-highlight { color: var(--at-red) !important; }
+        .summary-row .val-success { color: var(--success) !important; }
+
+        .btn-p {
+            width: 100%;
+            background: var(--at-red);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.25);
+            transition: all 0.2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-        .ref-id { 
-            color: var(--telecel-red); 
-            font-weight: 800; 
+        .btn-p:hover { background: #a01729; transform: translateY(-1px); }
+
+        .card-ft { text-align: center; margin-top: 20px; font-size: 11px; color: var(--muted); font-weight: 500; }
+        .secure { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 10px; font-size: 10px; color: var(--muted); font-weight: 600; }
+
+        /* Confetti effect */
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--at-red);
+            top: -10px;
+            border-radius: 2px;
+            animation: confettiFall 3s linear infinite;
         }
-        .btn-dash { 
-            width: 100%; 
-            background: var(--telecel-red); 
-            color: white; 
-            border: none; 
-            padding: 18px; 
-            border-radius: 12px; 
-            font-weight: 800; 
-            cursor: pointer; 
-            text-decoration: none; 
-            display: block; 
-            margin-top: 15px;
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(500px) rotate(360deg); opacity: 0; }
         }
-        .status { 
-            color: #22c55e; 
-            font-weight: 600; 
-            margin-top: 10px; 
+
+        @media (max-width: 500px) {
+            main { padding: 20px 12px; }
+            .card { padding: 32px 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <div class="header">ATMONEY SPEED LOANS</div>
-        
-        <div class="content">
-            <div class="success-icon">
-                <i class="fa-solid fa-circle-check"></i>
+    <header>
+        <a class="logo" href="index.html">
+            <div>
+                <div><span class="at">AT</span><span class="money">Money</span></div>
+                <div class="logo-tagline">LIFE IS SIMPLE</div>
             </div>
-            
-            <h2>Loan Approved!</h2>
-            <p style="color: #64748b; font-size: 15px; margin-bottom: 20px;">
-                Your loan request has been successfully approved. The funds will be transferred to your account within 30 minutes. Please be patient.
-            </p>
+        </a>
+    </header>
 
-            <div class="summary-card" id="loanSummary">
-                <div class="summary-row">
-                    <span>Date:</span>
-                    <span id="date"></span>
-                </div>
-                <div class="summary-row">
-                    <span>Amount:</span>
-                    <span id="loanAmount" class="ref-id">-</span>
-                </div>
-                <div class="summary-row">
-                    <span>Purpose:</span>
-                    <span id="loanPurpose">-</span>
-                </div>
-                <div class="summary-row">
-                    <span>Reference ID:</span>
-                    <span class="ref-id" id="refId">ATM-</span>
-                </div>
-                <div class="summary-row">
-                    <span>Status:</span>
-                    <span class="status">Pending Approval</span>
+    <main>
+        <div class="card">
+            <!-- Confetti Elements -->
+            <div class="confetti" style="left: 10%; background: var(--at-red); animation-delay: 0s;"></div>
+            <div class="confetti" style="left: 30%; background: var(--at-gold); animation-delay: 0.5s;"></div>
+            <div class="confetti" style="left: 50%; background: var(--at-blue); animation-delay: 1s;"></div>
+            <div class="confetti" style="left: 70%; background: var(--at-red); animation-delay: 0.2s;"></div>
+            <div class="confetti" style="left: 90%; background: var(--at-gold); animation-delay: 0.7s;"></div>
+
+            <div class="success-animation">
+                <div class="success-icon">
+                    <i class="fa-solid fa-check"></i>
                 </div>
             </div>
 
-            <a href="index.html" class="btn-dash">
-                <i class="fa-solid fa-house"></i> Return to Home
+            <h1>Loan Approved!</h1>
+            <p>Your loan request has been successfully verified. The funds are being processed and will be credited to your account shortly.</p>
+
+            <div class="summary-card">
+                <div class="summary-row">
+                    <span>Reference ID</span>
+                    <span id="refId">ATM-000000</span>
+                </div>
+                <div class="summary-row">
+                    <span>Date</span>
+                    <span id="date">July 29, 2026</span>
+                </div>
+                <div class="summary-row">
+                    <span>Loan Amount</span>
+                    <span id="loanAmount" class="val-highlight">GHS 0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Status</span>
+                    <span class="val-success">Transferring...</span>
+                </div>
+            </div>
+
+            <a href="index.html" class="btn-p">
+                <i class="fa-solid fa-house"></i> Back to Home
             </a>
+
+            <div class="card-ft">Need help? <a href="#" style="color: var(--at-red); text-decoration: none; font-weight: 700;">Contact Support</a></div>
+            <div class="secure">🔒 Secure Transaction &middot; ATMoney Speed Loans</div>
         </div>
-    </div>
+    </main>
 
     <script>
-        // Get loan details from URL parameters
-        function loadLoanDetails() {
+        function init() {
             const params = new URLSearchParams(window.location.search);
-            
             const amount = params.get('amount');
-            const purpose = params.get('purpose');
-            const name = params.get('name');
-
-            // Display amount
+            
+            // Set Amount
             if (amount) {
-                document.getElementById('loanAmount').textContent = `GHS ${parseFloat(amount).toLocaleString()}`;
-            }
-
-            // Display purpose
-            if (purpose) {
-                document.getElementById('loanPurpose').textContent = purpose.replace(/([A-Z])/g, ' $1').trim();
+                document.getElementById('loanAmount').textContent = 'GHS ' + parseFloat(amount).toLocaleString(undefined, {minimumFractionDigits: 2});
             } else {
-                document.getElementById('loanPurpose').textContent = "Personal / Emergency";
+                document.getElementById('loanAmount').textContent = 'GHS 5,000.00'; // Fallback
             }
 
-            // Generate Reference ID
-            const refId = "ATM-" + Math.floor(100000 + Math.random() * 900000);
+            // Generate Ref ID
+            const refId = 'ATM-' + Math.floor(100000 + Math.random() * 900000);
             document.getElementById('refId').textContent = refId;
-        }
 
-        // Set current date
-        function setCurrentDate() {
-            const dateEl = document.getElementById('date');
+            // Set Date
             const today = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            dateEl.textContent = today.toLocaleDateString('en-US', options);
+            document.getElementById('date').textContent = today.toLocaleDateString('en-US', options);
         }
 
-        // Initialize
-        window.onload = function() {
-            loadLoanDetails();
-            setCurrentDate();
-        };
+        window.onload = init;
     </script>
 </body>
 </html>
